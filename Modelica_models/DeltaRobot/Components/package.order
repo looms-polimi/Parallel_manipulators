@@ -1,0 +1,14 @@
+GlobalParameters
+Disc
+Base
+Platform
+GearReducer
+PartialActuator
+IdealActuatorPos
+IdealActuatorVel
+ServoMotor
+PartialParallelogram
+Parallelogram1
+Parallelogram2
+PartialThreeArms
+ThreeArms_P1_IdealActPos
