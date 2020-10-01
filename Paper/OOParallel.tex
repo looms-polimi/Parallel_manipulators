@@ -73,7 +73,7 @@ The Newton-Euler approach has been applied in \cite{DASGUPTA1998993} and in \cit
 
 The Lagrange-D'Alembert formulation has been applied in \cite{34765} and, recently, in \cite{A20}, where the Jacobian/Hessian matrices of the constraint equations are derived from the kinetic energy. With this approach the constraint forces (Lagrange multipliers) are removed from the motion equations, by projecting the motion of the system into the directions allowed by the kinematic constraints. Similarly, the Natural Orthogonal Complement (NOC) approach has been proposed in \cite{10.1115/1.3173642}, where the constraint forces are eliminated by multiplying the unconstrained dynamical equations by an orthogonal complement, derived from velocity constraints. The NOC approach has been recently applied to a Newton-Euler formulation of the dynamic model of a parallel Sch\"{o}nflies-motion generator \cite{KARIMIESKANDARY2018119}. Lagrangian formulation and virtual work principle have been applied in \cite{XDZ16}, with the goal to derive an efficient control-oriented dynamic model.
 
-In all the cited approaches, the parallel robot model is developed considering its dynamics as a whole, the derivation process is rather complex (the use of symbolic manipulation tools is often suggested, i.e. MAPLE in \cite{XDZ16}), and it is generally difficult to integrate into a multi-domain model, taking into account not only the dynamics of the multibody system but also the dynamics of electromechanical or hydraulic actuation devices, elasticity and friction, which have a significant effect on the dynamics of real manipulators. In particular, it has been shown in \cite{Grotjahn2004} that friction compensation yields significant improvements on control performance. 
+In all the cited approaches, the parallel robot model is developed considering its dynamics as a whole, the derivation process is rather complex (the use of symbolic manipulation tools is often suggested, i.e. MAPLE in \cite{XDZ16}), and it is generally difficult to integrate into a multi-domain model, taking into account not only the dynamics of the multibody system but also the dynamics of electromechanical or hydraulic actuation devices, elasticity and friction, which have a significant effect on the dynamics of real manipulators. In particular, it has been shown in \cite{Grotjahn2004} that friction compensation yields significant improvements on control performance.
 
 The modeling approaches described in the literature are therefore difficult to apply to the creation of Digital Twins (DT), compliant with the Industry 4.0 paradigm. In fact, a DT is something more than a simulation model. Having to be as faithful a replica as possible of the physical device, it must also replicate its structure in the connection of components, often belonging, in whole or in part, to physical domains other than the mechanical domain only. In particular, the development of a DT should take place in the same way as the assembly of the components of the physical system. In this respect, the Lagrangian approach to tree structure modeling is clearly not applicable, as it is based on the calculation of the kinetic and potential energy of the entire mechanical system as a whole. Furthermore, even the manipulations of the system of equations necessary to eliminate the constraint reactions from the equations of motion are in contrast with a true modular approach. On the other hand, object-oriented modeling seems to be particularly suitable for the creation of DT, in which it is able to guarantee a true modular multi-domain approach to modeling \cite{SF18}.
 
@@ -152,16 +152,15 @@ The upper arm rotational joints are attached to the base along a circumference o
 
 It must be pointed out that the upper and lower connectors of the legs model in Fig. \ref{Fig:Delta_robot_Modelica_top_level}(b) are actually vector connectors. In other words, all the servomotors connectors and the connectors attached to the lower sides of the parallelograms are collected in a vector one, in turn connected to another vector connector of the base and platform. The base and platform models then define the correct geometrical displacements among the legs connectors through fixed rototranslation models.
 
-\textcolor{red}{
-Qui mi piacerebbe dire questo:
-\begin{itemize}
-  \item I modelli sono stati costruiti utilizzando giunti di libreria, che potenzialmente introducono le variabili di stato associate ai gradi di libert\`{a} introdotti.
-  \item A seguito della chiusura delle catene cinematiche per\`{o} i gradi di libert\`{a} sono solo quelli associati agli attuatori e propriamente le variabili di stato del modello dovrebbero essere associate ai soli gradi di libert\`{a} effettivi.
-  \item Per implementare tale scelta e guidare la manipolazione simbolica si sono quindi utilizzati i costrutti \code{StateSelect.always} per le variabili degli attuatori (posizione e velocit\`{a}) e \code{StateSelect.never} per le variabili di tutti gli altri giunti.
-  \item Un altro problema riguarda l'inizializzazione del modello, in particolare la necessit\`{a} di risolvere le catene cinematiche chiuse.
-  \item Anche in questo caso si è deciso di fissare, tramite l'attributo \code{fixed = true} le variabili degli attuatori e definire quindi i valori iniziali di tutte le altre variabili come valori di tentativo.
-  \item Per facilitare la convergenza nel calcolo della configurazione iniziale si \`{e} definita una configurazione di riferimento, utilizzata nel metodo di omotopia implementato dal compilatore.
-\end{itemize}
+\textcolor{blue}{
+The model was built using library joints, which potentially introduce the state variables associated with the introduced degrees of freedom.
+As a consequence of the closure of the kinematic chains, however, the degrees of freedom are only those associated with the actuators and, properly, the state variables of the model should be associated with the actual degrees of freedom only.
+To implement this choice and guide the symbolic manipulation, the construct \code{StateSelect.always} was used for the variables of the actuators (position and speed) and \code{StateSelect.never} for the variables of all the other joints.
+}
+
+\textcolor{blue}{
+Another problem concerns the initialization of the model, in particular the need to solve closed kinematic chains.
+Also in this case it was decided to set the actuator variables using the \code{fixed = true} attribute, and then define the initial values of all the other variables as attempt values.
 }
 
 \textcolor{red}{
