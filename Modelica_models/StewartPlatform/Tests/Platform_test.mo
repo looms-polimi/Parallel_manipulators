@@ -1,7 +1,7 @@
 within StewartPlatform.Tests;
 
 model Platform_test
-  StewartPlatform.Components.Platform platform(fixInitOrientation = true, fixInitPosition = true, rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence, useGlobalParameters = true)      annotation(
+  StewartPlatform.Components.Platform platform(fixInitOrientation = true, fixInitPosition = true, rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence, useGlobalParameters = false)      annotation(
     Placement(visible = true, transformation(origin = {0, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner StewartPlatform.Components.GlobalParameters gp(rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence)  annotation(
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

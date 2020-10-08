@@ -18,13 +18,7 @@ model IdealLeg "Six-degrees-of-freedom leg with controlled length composed of an
 
 // Ideal linear actuator
     parameter Types.ElectricCylinderParameters 
-        ECparameters(
-            final noLoadTorque,
-            final frictionTorque_Tv,
-            final frictionTorque_Kv,
-            final effectiveTorque_Kf,
-            final backlash) 
-        "Electric cylinder parameters" 
+        ECparameters "Electric cylinder parameters" 
         annotation (Dialog(group="Ideal linear actuator"));
 
     parameter StateSelect ila_stateSelect = StateSelect.prefer "Priority to use cylinder total length and its derivative (velocity) as states"annotation (Dialog(group="Ideal linear actuator"));

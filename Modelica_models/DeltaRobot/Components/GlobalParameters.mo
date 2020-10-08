@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-model GlobalParameters "This model includes all parameters that are shared between the models od this library"
+model GlobalParameters "This model includes all parameters that are shared between the models of this library"
     extends DeltaRobot.Icons.GlobalParameters; // Icon
 
     // Parameters

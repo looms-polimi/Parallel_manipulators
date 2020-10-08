@@ -27,7 +27,7 @@ algorithm
     for i in 1:6 loop      
       legsDirections_i := position-B_b[i]+TM.resolve1(T_bp,{P_p[i,1],P_p[i,2],P_p[i,3]});      
       
-      if normalize == true then
+      if normalize then
         legsDirections_i := Modelica.Math.Vectors.normalize(legsDirections_i);
       end if;
       

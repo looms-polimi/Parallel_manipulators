@@ -1,7 +1,7 @@
 within StewartPlatform.Tests;
 
 model Disc_test
-  StewartPlatform.Components.Disc disc(direction = StewartPlatform.Types.Direction.up, discParameters(D = 2))   annotation(
+  StewartPlatform.Components.Disc disc(direction = StewartPlatform.Types.Units.Direction.up, discParameters(D = 2))   annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world(n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {-26, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

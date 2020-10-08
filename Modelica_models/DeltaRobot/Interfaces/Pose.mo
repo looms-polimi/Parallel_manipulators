@@ -1,6 +1,6 @@
 within DeltaRobot.Interfaces;
 
-expandable connector Pose "Position of a rigid object"
+expandable connector Pose "Position of a rigid object in space"
     extends DeltaRobot.Icons.Pose; // Icon
 
     SI.Position position[3] "Position";

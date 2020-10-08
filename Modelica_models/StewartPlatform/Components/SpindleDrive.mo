@@ -4,7 +4,7 @@ model SpindleDrive "Spindle drive transforming rotational into translational mot
   extends StewartPlatform.Icons.SpindleDrive;
 
 // Imports
-  import StewartPlatform.Types.Pitch;
+  import StewartPlatform.Types.Units.Pitch;
 
 // Parameters
   parameter Pitch spindlePitch = 5 "Spindle pitch";

@@ -70,7 +70,7 @@ equation
            outputSample=lengthSat;
   end when;
 
-  if limitOutputs == true then
+  if limitOutputs then
 
     if stopWhenSaturated and saturationFlag then //Select the output based on the parameters and possible saturations
         legLength=outputSample;
@@ -88,5 +88,5 @@ equation
   velDerivative.u=legVelocity;
   legAcceleration=velDerivative.y;
 
-  connect(deMux.pose, pose) annotation (Line(points={{-63,0},{-90,0}}, color={0,0,0}));
+  connect(deMux.poseIn, pose) annotation (Line(points={{-63,0},{-90,0}}, color={0,0,0}));
 end InverseKinematic;
