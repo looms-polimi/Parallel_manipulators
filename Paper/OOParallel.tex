@@ -81,7 +81,7 @@ The modeling approaches described in the literature are therefore difficult to a
 
 This paper describes the development of DTs of parallel manipulators using an object-oriented approach where:
 \begin{itemize}
-  \item Only components of the standard Modelica library are used (apart from the explicitly developed inverse kinematics models), connected through the graphical interface of the interpreter (OpenModelica).
+  \item Only components of the standard Modelica library are used (no equations have been written, apart from the explicitly developed inverse kinematics models), connected through the graphical interface of the interpreter (OpenModelica).
   \item The management of closed kinematic chains is completely transparent to the user and is carried out directly by the symbolic manipulation process during the model compilation phase.
   \item The constructs of the Modelica language have been used to associate the state variables of the model to the actual degrees of freedom only, i.e. actuators coordinates, and to guide the symbolic manipulation and the calculation of the initial configuration of the simulations.
 \end{itemize}
@@ -154,16 +154,12 @@ The upper arm rotational joints are attached to the base along a circumference o
 
 It must be pointed out that the upper and lower connectors of the legs model in Fig. \ref{Fig:Delta_robot_Modelica_top_level}(b) are actually vector connectors. In other words, all the servomotors connectors and the connectors attached to the lower sides of the parallelograms are collected in a vector one, in turn connected to another vector connector of the base and platform. The base and platform models then define the correct geometrical displacements among the legs connectors through fixed rototranslation models.
 
-\textcolor{blue}{
 The model was built using library joints, which potentially introduce the state variables associated with the introduced degrees of freedom.
 As a consequence of the closure of the kinematic chains, however, the degrees of freedom are only those associated with the actuators and, properly, the state variables of the model should be associated with the actual degrees of freedom only.
 To implement this choice and guide the symbolic manipulation, the construct \code{StateSelect.always} was used for the variables of the actuators (position and speed) and \code{StateSelect.never} for the variables of all the other joints.
-}
 
-\textcolor{blue}{
 Another problem concerns the initialization of the model, in particular the need to solve closed kinematic chains.
 Also in this case it was decided to set the actuator variables using the \code{fixed = true} attribute, and then define the initial values of all the other variables as attempt values.
-}
 
 \textcolor{red}{
 Validazione sperimentale.
