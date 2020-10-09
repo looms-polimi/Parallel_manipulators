@@ -43,7 +43,7 @@ model IdealSixLegs "Set of six legs of a Stewart platform appropiately connected
   parameter Real Tf = 0.05 "Time constant of the first order filter applied to the length ref. input" annotation (Dialog(group="Ideal linear actuators"));
 
 // Spherical joint
-  parameter Boolean sj_EnforceStates[6] = fill(false,6) "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"));
+  parameter Boolean sj_enforceStates[6] = fill(false,6) "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"));
   parameter Boolean sj_useQuaternions[6] = fill(false,6) "= true, if quaternions shall be used as states otherwise use 3 angles as states (provided sj_enforceStates=true)" annotation (Dialog(group="Spherical joint"));
 
 // Universal joints
@@ -65,11 +65,11 @@ model IdealSixLegs "Set of six legs of a Stewart platform appropiately connected
     annotation(Dialog(group="Initialization: initial platform position and orientation"));
 
 // Animation
-  parameter SI.Distance cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joints"
+  parameter SI.Distance uj_cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joints"
     annotation (Dialog(tab="Animation", group="Universal joints"),HideResult=true);
-  parameter SI.Distance cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joints"
+  parameter SI.Distance uj_cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joints"
     annotation (Dialog(tab="Animation", group="Universal joints"),HideResult=true);
-  parameter SI.Diameter sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of spheres representing the spherical joints"
+  parameter SI.Diameter sj_sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of spheres representing the spherical joints"
     annotation (Dialog(tab="Animation", group="Spherical joints"),HideResult=true);
 
 protected
@@ -107,15 +107,15 @@ public
       angles=ujangles[1],
       initialLength=initialLength[1],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[1],
       uj_initialAnglesFixed=uj_initialAnglesFixed[1],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[1],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[1],
-      sj_EnforceStates=sj_EnforceStates[1],
+      sj_enforceStates=sj_enforceStates[1],
       sj_useQuaternions=sj_useQuaternions[1],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,
@@ -146,15 +146,15 @@ public
       angles=ujangles[2],
       initialLength=initialLength[2],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[2],
       uj_initialAnglesFixed=uj_initialAnglesFixed[2],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[2],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[2],
-      sj_EnforceStates=sj_EnforceStates[2],
+      sj_enforceStates=sj_enforceStates[2],
       sj_useQuaternions=sj_useQuaternions[2],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,
@@ -185,15 +185,15 @@ public
       angles=ujangles[3],
       initialLength=initialLength[3],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[3],
       uj_initialAnglesFixed=uj_initialAnglesFixed[3],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[3],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[3],
-      sj_EnforceStates=sj_EnforceStates[3],
+      sj_enforceStates=sj_enforceStates[3],
       sj_useQuaternions=sj_useQuaternions[3],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,
@@ -224,15 +224,15 @@ public
       angles=ujangles[4],
       initialLength=initialLength[4],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[4],
       uj_initialAnglesFixed=uj_initialAnglesFixed[4],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[4],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[4],
-      sj_EnforceStates=sj_EnforceStates[4],
+      sj_enforceStates=sj_enforceStates[4],
       sj_useQuaternions=sj_useQuaternions[4],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,
@@ -263,15 +263,15 @@ public
       angles=ujangles[5],
       initialLength=initialLength[5],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[5],
       uj_initialAnglesFixed=uj_initialAnglesFixed[5],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[5],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[5],
-      sj_EnforceStates=sj_EnforceStates[5],
+      sj_enforceStates=sj_enforceStates[5],
       sj_useQuaternions=sj_useQuaternions[5],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,
@@ -302,15 +302,15 @@ public
       angles=ujangles[6],
       initialLength=initialLength[6],
       Tf=Tf,
-      sphereDiameter=sphereDiameter,
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter,             
+      sj_sphereDiameter=sj_sphereDiameter,
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter,             
       enableLimiter=enableLimiters,
       uj_stateSelect=uj_stateSelect[6],
       uj_initialAnglesFixed=uj_initialAnglesFixed[6],
       uj_initialAngularVelFixed=uj_initialAngularVelFixed[6],
       uj_initialAngularAccFixed=uj_initialAngularAccFixed[6],
-      sj_EnforceStates=sj_EnforceStates[6],
+      sj_enforceStates=sj_enforceStates[6],
       sj_useQuaternions=sj_useQuaternions[6],
       ECparameters(
         spindlePitch=ECparameters.spindlePitch,

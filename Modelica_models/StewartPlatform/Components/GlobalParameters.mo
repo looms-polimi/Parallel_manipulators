@@ -35,14 +35,14 @@ model GlobalParameters "This model includes all parameters that are shared betwe
         
         parameter TY.RotationTypes rotationType=TY.RotationTypes.RotationAxis "Type of rotation description" annotation (Dialog(tab="Initialization", group="Initial platform position and orientation"), Evaluate=true);
         
-        parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in platform frame)" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = RotationAxis", enable=rotationType == TY.RotationTypes.RotationAxis));
-        parameter NonSI.Angle_deg angle=0 "Angle to rotate base frame around axis n into platform frame" annotation(Dialog(tab="Initialization", group="if rotationType = RotationAxis", enable=rotationType ==  TY.RotationTypes.RotationAxis));
+        parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in platform frame)" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = RotationAxis"));
+        parameter NonSI.Angle_deg angle=0 "Angle to rotate base frame around axis n into platform frame" annotation(Dialog(tab="Initialization", group="if rotationType = RotationAxis"));
 
-        parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors", enable=rotationType == TY.RotationTypes.TwoAxesVectors));
-        parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors", enable=rotationType == TY.RotationTypes.TwoAxesVectors));
+        parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
+        parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
 
-        parameter TY.RotationSequence sequence(min={1,1,1}, max={3,3,3}) = {1,2,3} "Sequence of rotations" annotation (Evaluate=true, Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence", enable=rotationType == TY.RotationTypes.PlanarRotationSequence));
-        parameter NonSI.Angle_deg angles[3]={0,0,0} "Rotation angles around the axes defined in 'sequence'" annotation (Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence", enable=rotationType == TY.RotationTypes.PlanarRotationSequence));
+        parameter TY.RotationSequence sequence(min={1,1,1}, max={3,3,3}) = {1,2,3} "Sequence of rotations" annotation (Evaluate=true, Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence"));
+        parameter NonSI.Angle_deg angles[3]={0,0,0} "Rotation angles around the axes defined in 'sequence'" annotation (Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence"));
 
         // Conversion of the orientation in a sequence of rotations
         final parameter Frames.Orientation R_rel=if rotationType == TY.RotationTypes.RotationAxis

@@ -16,9 +16,9 @@ model Controller "Cascade of controllers to control the axes"
     parameter Modelica.Blocks.Types.SimpleController controllerType = Modelica.Blocks.Types.SimpleController.PID "Type of controllers" annotation(Dialog(group="PID parameters"));
     parameter Real P(min=0, unit="1") = gp.SMparameters.Tmax/500 "Proportional action" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax/500, sostituire con qualcosa di corretto
     parameter SI.Time Ti(min=Modelica.Constants.small) = 0.5 "Time constant of Integrator blocks"
-      annotation(Dialog(group="PID parameters",enable=controllerType==Modelica.Blocks.Types.SimpleController.PI or controllerType==Modelica.Blocks.Types.SimpleController.PID));
+      annotation(Dialog(group="PID parameters"));
     parameter SI.Time Td(min=0)= 0.01 "Time constant of Derivative blocks"
-      annotation(Dialog(group="PID parameters",enable=controllerType==Modelica.Blocks.Types.SimpleController.PD or controllerType==Modelica.Blocks.Types.SimpleController.PID));
+      annotation(Dialog(group="PID parameters"));
     parameter SI.Time preFilterTimeConstant = 0.1 "Time constant of the prefilter applied to legth ref." annotation(Dialog(group="PID parameters"));
     parameter SI.Time postFilterTimeConstant = 0.001 "Time constant of the postfilter (additional pole)" annotation(Dialog(group="PID parameters"));
     parameter SI.Torque maxOutput = gp.SMparameters.Tmax "The controllers output are limited within [-maxOutput,maxOutput]" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax, sostituire con qualcosa
@@ -27,7 +27,7 @@ model Controller "Cascade of controllers to control the axes"
     parameter Boolean limitOutputs = true "=true, if you want to limit the outputs within [minLength,maxLength]"
       annotation(Dialog(group="Inverse kinematic - Limits"), choices(checkBox=true));
     parameter Boolean stopWhenSaturated = true "When a saturation is detected all output signals maintein their current values until all output signals return within the limits"
-     annotation(Dialog(group="Inverse kinematic - Limits", enable = limitOutputs));
+     annotation(Dialog(group="Inverse kinematic - Limits"));
     parameter SI.Length maxLength = gp.maxLength "Max leg length" annotation(Dialog(group="Inverse kinematic - Limits"));
     parameter SI.Length minLength = gp.minLength "Min leg length" annotation(Dialog(group="Inverse kinematic - Limits"));
 

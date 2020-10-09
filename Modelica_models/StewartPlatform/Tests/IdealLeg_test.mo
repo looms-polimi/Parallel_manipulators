@@ -1,7 +1,7 @@
 within StewartPlatform.Tests;
 
 model IdealLeg_test
-  StewartPlatform.Components.IdealLeg idealLeg(ila_stateSelect = StateSelect.always, initialLengthFixed = true, initialVelFixed = true, sj_EnforceStates = true, uj_initialAnglesFixed = true, uj_initialAngularVelFixed = true, uj_stateSelect = StateSelect.always)   annotation(
+  StewartPlatform.Components.IdealLeg idealLeg(ila_stateSelect = StateSelect.always, initialLengthFixed = true, initialVelFixed = true, sj_enforceStates = true, uj_initialAnglesFixed = true, uj_initialAngularVelFixed = true, uj_stateSelect = StateSelect.always)   annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Sine sine(amplitude = 1, f = 0.25, offset = idealLeg.idealLinearActuator.ECparameters.boxLength + idealLeg.idealLinearActuator.ECparameters.minPistonLength + idealLeg.idealLinearActuator.ECparameters.workingStroke / 2, startTime = 1) annotation(
     Placement(visible = true, transformation(origin = {-30, 40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -1,7 +1,7 @@
 within StewartPlatform.Tests;
 
 model Leg_test
-  StewartPlatform.Components.Leg leg(ec_initialLengthFixed = true, ec_initialVelFixed = true, sj_EnforceStates = true, sm_initialTorqueFixed = true, uj_initialAnglesFixed = true, uj_initialAngularVelFixed = true)  annotation(
+  StewartPlatform.Components.Leg leg(ec_initialLengthFixed = true, ec_initialVelFixed = true, sj_enforceStates = true, uj_initialAnglesFixed = true, uj_initialAngularVelFixed = true)  annotation(
     Placement(visible = true, transformation(origin = {2, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Sine sine(amplitude = 0.1, f = 0.1, offset = leg.ec_initialLength, startTime = 1) annotation(
     Placement(visible = true, transformation(origin = {-168, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

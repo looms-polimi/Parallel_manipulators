@@ -16,14 +16,10 @@ model SixLegs "Set of six legs of a Stewart platform appropiately connected, com
 // Universal joints
     parameter SI.Angle alpha[6] = gp.alpha "Orientation of the universal joint: rotation around z-axis from frame_a" annotation (Dialog(group="Universal joint"));
     
-    parameter StateSelect uj_stateSelect[6] = fill(StateSelect.prefer,6) "Priority to use universal joint coordinates (phi_a, phi_b, w_a, w_b) as states"
-      annotation (Dialog(group="Universal joint"));
-    parameter Boolean uj_initialAnglesFixed[6] = fill(false,6) "=true, if you want to use universal joint angles as initial eqation ('fixed' attributes)" 
-      annotation (Dialog(group="Universal joint"));
-    parameter Boolean uj_initialAngularVelFixed[6] = fill(false,6) "=true, if you want to use universal joint angular velocities (=0) of the joint as initial eqation ('fixed' attributes)"
-      annotation (Dialog(group="Universal joint"));
-    parameter Boolean uj_initialAngularAccFixed[6] = fill(false,6) "=true, if you want to use universal joint angular accelerations (=0) of the joint as initial eqatio ('fixed' attributes)"
-      annotation (Dialog(group="Universal joint"));
+    parameter StateSelect uj_stateSelect[6] = fill(StateSelect.prefer,6) "Priority to use universal joint coordinates (phi_a, phi_b, w_a, w_b) as states" annotation (Dialog(group="Universal joint"));
+    parameter Boolean uj_initialAnglesFixed[6] = fill(false,6) "=true, if you want to use universal joint angles as initial eqation ('fixed' attributes)" annotation (Dialog(group="Universal joint"));
+    parameter Boolean uj_initialAngularVelFixed[6] = fill(false,6) "=true, if you want to use universal joint angular velocities (=0) of the joint as initial eqation ('fixed' attributes)" annotation (Dialog(group="Universal joint"));
+    parameter Boolean uj_initialAngularAccFixed[6] = fill(false,6) "=true, if you want to use universal joint angular accelerations (=0) of the joint as initial eqatio ('fixed' attributes)" annotation (Dialog(group="Universal joint"));
 
 // Electric cylinder
     parameter Types.ElectricCylinderParameters ECparameters=gp.ECparameters "Electric cylinders parameters" annotation (Dialog(group="Electric cylinder"));
@@ -35,11 +31,10 @@ model SixLegs "Set of six legs of a Stewart platform appropiately connected, com
 // Servo motor
     parameter StewartPlatform.Types.ServoMotorParameters SMparameters annotation (Dialog(group="Servo motor"));
     parameter SI.Torque sm_initialTorque[6] = fill(0,6) "Initial torque applied by the motor" annotation (Dialog(group="Servo motor"));
-    parameter Boolean sm_initialTorqueFixed[6] = fill(false,6) "=true, if you want to use initial torque as initial eqation ('fixed' attributes)" annotation (choices(checkBox=true), Dialog(group="Servo motor"));
     parameter Init sm_initType[6] = fill(Init.NoInit,6) "Type of initialization of servo motor's internal control (1: no init, 2: steady state, 3/4: initial output)" annotation(Evaluate=true, Dialog(group="Servo motor"));
 
 // Spherical joint
-    parameter Boolean sj_EnforceStates[6] = fill(false,6) "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
+    parameter Boolean sj_enforceStates[6] = fill(false,6) "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
     parameter Boolean sj_useQuaternions[6] = fill(false,6) "= true, if quaternions shall be used as states otherwise use 3 angles as states (provided sj_enforceStates=true)" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
     parameter Boolean sj_initialAngularVelFixed[6] = fill(false,6) "=true, if you want to use angular velocities (=0) of the spherical joint as initial eqation ('fixed' attributes)" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
     parameter Boolean sj_initialAngularAccFixed[6] = fill(false,6) "=true, if you want to use angular accelerations (=0) of the spherical joint as initial eqation ('fixed' attributes)" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
@@ -53,11 +48,11 @@ model SixLegs "Set of six legs of a Stewart platform appropiately connected, com
     annotation(Dialog(group="Initialization: initial platform position and orientation"));
 
 // Animation
-  parameter SI.Distance cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joints"
+  parameter SI.Distance uj_cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joints"
     annotation (Dialog(tab="Animation", group="Universal joints"),HideResult=true);
-  parameter SI.Distance cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joints"
+  parameter SI.Distance uj_cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joints"
     annotation (Dialog(tab="Animation", group="Universal joints"),HideResult=true);
-  parameter SI.Diameter sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of spheres representing the spherical joints"
+  parameter SI.Diameter sj_sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of spheres representing the spherical joints"
     annotation (Dialog(tab="Animation", group="Spherical joints"),HideResult=true);
 
 protected
@@ -111,17 +106,16 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[1],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[1],
       sm_initType=sm_initType[1],
 
-      sj_EnforceStates=sj_EnforceStates[1], // Spherical joint
+      sj_enforceStates=sj_enforceStates[1], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[1],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[1],
       sj_initialAngularAccFixed=sj_initialAngularAccFixed[1],
       
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
@@ -144,17 +138,16 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[2],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[2],
       sm_initType=sm_initType[2],
 
-      sj_EnforceStates=sj_EnforceStates[2], // Spherical joint
+      sj_enforceStates=sj_enforceStates[2], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[2],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[2],
       sj_initialAngularAccFixed=sj_initialAngularAccFixed[2],
       
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
     annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -177,17 +170,16 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[3],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[3],
       sm_initType=sm_initType[3],
 
-      sj_EnforceStates=sj_EnforceStates[3], // Spherical joint
+      sj_enforceStates=sj_enforceStates[3], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[3],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[3],
       sj_initialAngularAccFixed=sj_initialAngularAccFixed[3],
       
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
     annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -210,17 +202,16 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[4],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[4],
       sm_initType=sm_initType[4],
 
-      sj_EnforceStates=sj_EnforceStates[4], // Spherical joint
+      sj_enforceStates=sj_enforceStates[4], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[4],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[4],
       sj_initialAngularAccFixed=sj_initialAngularAccFixed[4],
       
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
     annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -243,17 +234,16 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[5],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[5],
       sm_initType=sm_initType[5],
 
-      sj_EnforceStates=sj_EnforceStates[5], // Spherical joint
+      sj_enforceStates=sj_enforceStates[5], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[5],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[5],
       sj_initialAngularAccFixed=sj_initialAngularAccFixed[5],
       
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
     annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -276,17 +266,15 @@ public
 
       SMparameters=SMparameters, // Servo motor
       sm_initialTorque=sm_initialTorque[6],
-      sm_initialTorqueFixed=sm_initialTorqueFixed[6],
       sm_initType=sm_initType[6],
 
-      sj_EnforceStates=sj_EnforceStates[6], // Spherical joint
+      sj_enforceStates=sj_enforceStates[6], // Spherical joint
       sj_useQuaternions=sj_useQuaternions[6],
       sj_initialAngularVelFixed=sj_initialAngularVelFixed[6],
-      sj_initialAngularAccFixed=sj_initialAngularAccFixed[6],
-      
-      sphereDiameter=sphereDiameter, // Animation
-      cylinderLength=cylinderLength,
-      cylinderDiameter=cylinderDiameter)
+      sj_initialAngularAccFixed=sj_initialAngularAccFixed[6],      
+      sj_sphereDiameter=sj_sphereDiameter, // Animation
+      uj_cylinderLength=uj_cylinderLength,
+      uj_cylinderDiameter=uj_cylinderDiameter)
     annotation (Placement(transformation(
       extent={{-10,-10},{10,10}},
       rotation=90,
@@ -328,19 +316,19 @@ equation
   feedForceDIS[5]=leg5.electricCylinder.feedForce;
   feedForceDIS[6]=leg6.electricCylinder.feedForce;
 
-  motorTorqueDIS[1]=leg1.simpleServoMotor.T;
-  motorTorqueDIS[2]=leg2.simpleServoMotor.T;
-  motorTorqueDIS[3]=leg3.simpleServoMotor.T;
-  motorTorqueDIS[4]=leg4.simpleServoMotor.T;
-  motorTorqueDIS[5]=leg5.simpleServoMotor.T;
-  motorTorqueDIS[6]=leg6.simpleServoMotor.T;
+  motorTorqueDIS[1]=leg1.servoMotor.T;
+  motorTorqueDIS[2]=leg2.servoMotor.T;
+  motorTorqueDIS[3]=leg3.servoMotor.T;
+  motorTorqueDIS[4]=leg4.servoMotor.T;
+  motorTorqueDIS[5]=leg5.servoMotor.T;
+  motorTorqueDIS[6]=leg6.servoMotor.T;
 
-  motorSpeedDIS[1]=leg1.simpleServoMotor.w*60/2/pi;
-  motorSpeedDIS[2]=leg2.simpleServoMotor.w*60/2/pi;
-  motorSpeedDIS[3]=leg3.simpleServoMotor.w*60/2/pi;
-  motorSpeedDIS[4]=leg4.simpleServoMotor.w*60/2/pi;
-  motorSpeedDIS[5]=leg5.simpleServoMotor.w*60/2/pi;
-  motorSpeedDIS[6]=leg6.simpleServoMotor.w*60/2/pi;
+  motorSpeedDIS[1]=leg1.servoMotor.w*60/2/pi;
+  motorSpeedDIS[2]=leg2.servoMotor.w*60/2/pi;
+  motorSpeedDIS[3]=leg3.servoMotor.w*60/2/pi;
+  motorSpeedDIS[4]=leg4.servoMotor.w*60/2/pi;
+  motorSpeedDIS[5]=leg5.servoMotor.w*60/2/pi;
+  motorSpeedDIS[6]=leg6.servoMotor.w*60/2/pi;
 
   connect(frame_platform[1], leg1.frame_b) annotation (Line(
       points={{0,86.6667},{-68,86.6667},{-68,15.8}},

@@ -4,7 +4,7 @@ partial model PartialElectricCylinder "Partial model of an electric cylinder"
 
 // Parameters
   parameter Types.ElectricCylinderParameters ECparameters "Electric cylinder parameters";
-  parameter StateSelect pj_stateSelect = StateSelect.prefer "Priority to use cylinder total length and its derivative (velocity) as states (prismatic joint)";
+  parameter StateSelect pj_stateSelect = StateSelect.prefer "Priority to use cylinder total length and its derivative (velocity) as states (prismatic joint model)";
 
 // Initialization
   parameter SI.Length 
@@ -13,9 +13,9 @@ partial model PartialElectricCylinder "Partial model of an electric cylinder"
       max=ECparameters.boxLength+ECparameters.minPistonLength+ECparameters.workingStroke)
         = ECparameters.boxLength+ECparameters.minPistonLength+ECparameters.workingStroke/2
     "Initial length, distance between frame_a and frame_b" annotation (Dialog(group="Initialization"));
-  parameter Boolean pj_initialLengthFixed = false "=true, if you want to use the initial length (=pj_initialLength) as initial eqation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));
-  parameter Boolean pj_initialVelFixed = false "=true, if you want to use the initial velocity (=0) as initial eqation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));
-  parameter Boolean pj_initialAccFixed = false "=true, if you want to use the initial acceleration (=0) as initial eqation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));    
+  parameter Boolean pj_initialLengthFixed = false "=true, if you want to use the initial length (=pj_initialLength) as initial equation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));
+  parameter Boolean pj_initialVelFixed = false "=true, if you want to use the initial velocity (=0) as initial equation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));
+  parameter Boolean pj_initialAccFixed = false "=true, if you want to use the initial acceleration (=0) as initial equation ('fixed' attributes)" annotation (Dialog(group="Initialization"),choices(checkBox=true));    
 
 // Variables
   SI.Length stroke "Current stroke, (=length-minPistonLength-boxLength-workingStroke/2)";
@@ -73,21 +73,9 @@ equation
   revolutions=length*1000/ECparameters.spindlePitch;
   rotationalSpeed=velocity*1000/ECparameters.spindlePitch;
 
-  connect(frame_a, prismatic.frame_a) annotation (Line(
-      points={{-100,0},{-10,0}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(prismatic.frame_b, frame_b) annotation (Line(
-      points={{10,0},{100,0}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(bodyBox.frame_a, prismatic.frame_a) annotation (Line(
-      points={{-60,-24},{-60,0},{-10,0}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(bodyCylinder.frame_b, frame_b) annotation (Line(
-      points={{60,-24},{60,0},{100,0}},
-      color={95,95,95},
-      thickness=0.5));
-
+  connect(frame_a, prismatic.frame_a) annotation (Line(points={{-100,0},{-10,0}},color={95,95,95},thickness=0.5));
+  connect(prismatic.frame_b, frame_b) annotation (Line(points={{10,0},{100,0}},color={95,95,95},thickness=0.5));
+  connect(bodyBox.frame_a, prismatic.frame_a) annotation (Line(points={{-60,-24},{-60,0},{-10,0}},color={95,95,95},thickness=0.5));
+  connect(bodyCylinder.frame_b, frame_b) annotation (Line(points={{60,-24},{60,0},{100,0}},color={95,95,95},thickness=0.5));
+  
 end PartialElectricCylinder;

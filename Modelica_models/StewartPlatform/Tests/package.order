@@ -9,7 +9,6 @@ IdealSixLegs_test
 simplifiedModel_test
 simplifiedModel_test2
 ServoMotor_test
-SimpleServoMotor_test
 Leg_test
 SpindleDrive_test
 ElectricCylinder_test

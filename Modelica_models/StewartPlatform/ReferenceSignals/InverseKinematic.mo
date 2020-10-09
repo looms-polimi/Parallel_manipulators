@@ -13,7 +13,7 @@ model InverseKinematic "The outputs are the six leg lengths required to have the
     parameter StewartPlatform.Types.DiscParameters base = gp.base "Base parameters";
 
     parameter Boolean limitOutputs = true "=true, if you want to limit the outputs within [minLength,maxLength]" annotation(Dialog(group="Limits"), choices(checkBox=true));
-    parameter Boolean stopWhenSaturated = true "When a saturation is detected all output signals maintain their current values until all output signals return within the limits" annotation(Dialog(group="Limits", enable = limitOutputs));
+    parameter Boolean stopWhenSaturated = true "When a saturation is detected all output signals maintain their current values until all output signals return within the limits" annotation(Dialog(group="Limits"));
     parameter SI.Length maxLength = gp.maxLength "Max leg length" annotation(Dialog(group="Limits"));
     parameter SI.Length minLength = gp.minLength "Min leg length" annotation(Dialog(group="Limits"));
 

@@ -41,15 +41,15 @@ model IdealLeg "Six-degrees-of-freedom leg with controlled length composed of an
       annotation (Dialog(group="Ideal linear actuator"));
 
 // Spherical joint
-    parameter Boolean sj_EnforceStates = false "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"));
+    parameter Boolean sj_enforceStates = false "=true, if the variables of the spherical joint have priority to be selected as states" annotation (Dialog(group="Spherical joint"));
     parameter Boolean sj_useQuaternions = false "= true, if quaternions shall be used as states otherwise use 3 angles as states (provided sj_enforceStates=true)" annotation (Dialog(group="Spherical joint"));
     parameter Boolean sj_initialAngularVelFixed = false "=true, if you want to use angular velocities (=0) of the spherical joint as initial eqation ('fixed' attributes)" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
     parameter Boolean sj_initialAngularAccFixed = false "=true, if you want to use angular accelerations (=0) of the spherical joint as initial eqation ('fixed' attributes)" annotation (Dialog(group="Spherical joint"), choices(checkBox=true));
     
 // Animation
-    parameter SI.Diameter sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of sphere representing the spherical joint" annotation (Dialog(group="Animation"));
-    parameter SI.Distance cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joint" annotation (Dialog(group="Animation"));
-    parameter SI.Distance cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joint" annotation (Dialog(group="Animation"));
+    parameter SI.Diameter sj_sphereDiameter(displayUnit = "mm") = 1/16 "Diameter of sphere representing the spherical joint" annotation (Dialog(group="Animation"));
+    parameter SI.Distance uj_cylinderLength(displayUnit = "mm") = 1/10 "Length of cylinders representing the universal joint" annotation (Dialog(group="Animation"));
+    parameter SI.Distance uj_cylinderDiameter(displayUnit = "mm") = 1/20 "Diameter of cylinders representing the universal joint" annotation (Dialog(group="Animation"));
     
 // Models
     Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a "Frame for connection with a base's joint frame"
@@ -58,11 +58,11 @@ model IdealLeg "Six-degrees-of-freedom leg with controlled length composed of an
                                                             annotation (Placement(transformation(extent={{122,-16},{154,16}}), iconTransformation(extent={{122,-16},{154,16}})));
     Modelica.Mechanics.MultiBody.Joints.Spherical 
         spherical(
-            enforceStates=sj_EnforceStates,
+            enforceStates=sj_enforceStates,
             useQuaternions=sj_useQuaternions,
             w_rel_a_fixed = sj_initialAngularVelFixed,
             z_rel_a_fixed = sj_initialAngularAccFixed,
-            sphereDiameter=sphereDiameter)
+            sphereDiameter=sj_sphereDiameter)
         annotation (Placement(transformation(extent={{42,-10},{62,10}})));
     Modelica.Blocks.Interfaces.RealInput lengthRef "Leg length reference signal"
         annotation (Placement(transformation(
@@ -77,8 +77,8 @@ model IdealLeg "Six-degrees-of-freedom leg with controlled length composed of an
             uj_initialAnglesFixed=uj_initialAnglesFixed,
             uj_initialAngularVelFixed=uj_initialAngularVelFixed,
             uj_initialAngularAccFixed=uj_initialAngularAccFixed,
-            cylinderLength=cylinderLength,
-            cylinderDiameter=cylinderDiameter)
+            uj_cylinderLength=uj_cylinderLength,
+            uj_cylinderDiameter=uj_cylinderDiameter)
         annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
     IdealLinearActuator 
         idealLinearActuator(
