@@ -111,7 +111,7 @@ partial model PartialTrajectoryModel "This model collects all the common paramet
     SI.Angle angles[3] "Current angles";
 
   Interfaces.Pose pose annotation (Placement(transformation(extent={{60,-30},{120,30}}), iconTransformation(extent={{60,-30},{120,30}})));
-  Interfaces.PoseMux mux(sequence=outputSequence) annotation (Placement(transformation(extent={{28,-10},{48,10}})));
+  Interfaces.PoseMux mux(sequenceIn=outputSequence) annotation (Placement(transformation(extent={{28,-10},{48,10}})));
 
   Modelica.Blocks.Sources.Constant const_startTime(k=startTime) annotation (Placement(transformation(extent={{28,-46},{48,-26}})));
   Modelica.Blocks.Sources.Constant const_stopTime(k=stopTime) annotation (Placement(transformation(extent={{28,-80},{48,-60}})));
@@ -122,7 +122,7 @@ equation
   mux.positionIn=position;
   mux.orientationIn=angles;
 
-  connect(mux.pose, pose) annotation (Line(points={{47,0},{90,0}}, color={0,0,0}));
+  connect(mux.poseOut, pose) annotation (Line(points={{47,0},{90,0}}, color={0,0,0}));
   connect(const_startTime.y, pose.startTime)
     annotation (Line(points={{49,-36},{90.15,-36},{90.15,0.15}}, color={0,0,127}), Text(
       string="%second",

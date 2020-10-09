@@ -9,9 +9,9 @@ model Switch "Switch between two or more Pose signals"
   //Parameters
     parameter Integer n(min=2) = 2 "Number of different input signals";
     parameter SwitchTimeDef timeDef = SwitchTimeDef.periods "Select how to define the switch time instants";
-    parameter SI.Time startTime = 0 "The output is the first signal for time<startTime+period[1])" annotation (Dialog(enable=timeDef == SwitchTimeDef.periods));
-    parameter SI.Time period[n-1](each min=0) = {0 for i in 1:n-1} "Duration of each signal (set n-1 periods)" annotation (Dialog(enable=timeDef == SwitchTimeDef.periods));
-    parameter SI.Time switchTime[n-1](each min=0) = {0 for i in 1:n-1}  "Time instants when to switch signal (set n-1 times)" annotation (Dialog(enable=timeDef == SwitchTimeDef.swithInstants));
+    parameter SI.Time startTime = 0 "The output is the first signal for time<startTime+period[1])";
+    parameter SI.Time period[n-1](each min=0) = {0 for i in 1:n-1} "Duration of each signal (set n-1 periods)";
+    parameter SI.Time switchTime[n-1](each min=0) = {0 for i in 1:n-1}  "Time instants when to switch signal (set n-1 times)";
 
   //Variables
     Integer count "Number of the current signal";

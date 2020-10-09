@@ -1,8 +1,6 @@
 within DeltaRobot.Components;
 
-model Base "Base of a Delta robot"
-    extends DeltaRobot.Icons.Disc; // Icon
-    
+model Base "Base of a Delta robot"    
     extends Disc(final direction=DeltaRobot.Types.Units.Direction.up, final discParameters=if useGlobalParameters then gp.base else base);
 
     // Parameters
@@ -15,8 +13,5 @@ model Base "Base of a Delta robot"
     Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation=false) annotation (Placement(transformation(extent={{-10,-11},{10,11}},rotation=90,origin={56,-9})));
 
 equation
-  connect(bodyCylinder.frame_a, fixed.frame_b) annotation (Line(
-      points={{-20,0},{18,0},{18,1},{56,1}},
-      color={95,95,95},
-      thickness=0.5));
+  connect(bodyCylinder.frame_a, fixed.frame_b) annotation (Line(points={{-20,0},{18,0},{18,1},{56,1}},color={95,95,95},thickness=0.5));
 end Base;

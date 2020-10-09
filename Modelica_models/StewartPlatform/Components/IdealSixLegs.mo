@@ -28,12 +28,7 @@ model IdealSixLegs "Set of six legs of a Stewart platform appropiately connected
       maxSpeed=gp.ECparameters.maxSpeed,
       maxAcceleration=gp.ECparameters.maxAcceleration,
       maxRotationalSpeed=gp.ECparameters.maxRotationalSpeed,
-      maxDrivingTorque=gp.ECparameters.maxDrivingTorque,
-      final noLoadTorque,
-      final frictionTorque_Tv,
-      final frictionTorque_Kv,
-      final effectiveTorque_Kf,
-      final backlash) 
+      maxDrivingTorque=gp.ECparameters.maxDrivingTorque) 
     "Electric cylinders parameters"
     annotation (Dialog(group="Ideal linear actuators"));
   

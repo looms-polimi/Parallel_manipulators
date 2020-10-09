@@ -2,13 +2,7 @@ within StewartPlatform.Components;
 
 model IdealLinearActuator "Model of a linear actuator with controllable length and first order dynamic motion"
   extends StewartPlatform.Icons.IdealLinearActuator;
-  extends StewartPlatform.Components.PartialElectricCylinder(
-    ECparameters(
-      final noLoadTorque,
-      final frictionTorque_Tv,
-      final frictionTorque_Kv,
-      final effectiveTorque_Kf,
-      final backlash));
+  extends StewartPlatform.Components.PartialElectricCylinder;
 
 // Imports
     import Modelica.Constants.inf;
@@ -28,8 +22,8 @@ model IdealLinearActuator "Model of a linear actuator with controllable length a
   Modelica.Blocks.Continuous.FirstOrder firstOrder(T = Tf, y_start = pj_initialLength) annotation (Placement(transformation(extent={{-60,18},{-40,38}})));
   Modelica.Blocks.Nonlinear.Limiter 
     limiter(
-      uMax=if enableLimiter==true then ECparameters.maxLength else inf, 
-      uMin=if enableLimiter==true then ECparameters.minLength else -inf)
+      uMax=if enableLimiter then ECparameters.maxLength else inf, 
+      uMin=if enableLimiter then ECparameters.minLength else -inf)
     annotation (Placement(transformation(extent={{-32,60},{-52,80}})));
 
 equation

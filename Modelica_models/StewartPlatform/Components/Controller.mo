@@ -8,20 +8,20 @@ model Controller "Cascade of controllers to control the axes"
 
     parameter StewartPlatform.Types.DiscParameters platform = gp.platform "Platform parameters";
     parameter StewartPlatform.Types.DiscParameters base = gp.base "Base parameters";
-    parameter StewartPlatform.Types.Pitch spindlePitch = gp.ECparameters.spindlePitch "Spindle pitch of the electric cylinder for rotation-dispacement conversion";
+    parameter StewartPlatform.Types.Units.Pitch spindlePitch = gp.ECparameters.spindlePitch "Spindle pitch of the electric cylinder for rotation-dispacement conversion";
     parameter Real ratio = gp.ECparameters.ratio "Transmission ratio (servomotor.phi/spindle.phi)";
     parameter SI.Torque initOutputs = 0.01107 "Initial value of the torque commands (Controller outputs)";
 
 // Controller
     parameter Modelica.Blocks.Types.SimpleController controllerType = Modelica.Blocks.Types.SimpleController.PID "Type of controllers" annotation(Dialog(group="PID parameters"));
-    parameter Real P(min=0, unit="1") = gp.SMparameters.Tmax/500 "Proportional action" annotation(Dialog(group="PID parameters"));
+    parameter Real P(min=0, unit="1") = gp.SMparameters.Tmax/500 "Proportional action" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax/500, sostituire con qualcosa di corretto
     parameter SI.Time Ti(min=Modelica.Constants.small) = 0.5 "Time constant of Integrator blocks"
       annotation(Dialog(group="PID parameters",enable=controllerType==Modelica.Blocks.Types.SimpleController.PI or controllerType==Modelica.Blocks.Types.SimpleController.PID));
     parameter SI.Time Td(min=0)= 0.01 "Time constant of Derivative blocks"
       annotation(Dialog(group="PID parameters",enable=controllerType==Modelica.Blocks.Types.SimpleController.PD or controllerType==Modelica.Blocks.Types.SimpleController.PID));
     parameter SI.Time preFilterTimeConstant = 0.1 "Time constant of the prefilter applied to legth ref." annotation(Dialog(group="PID parameters"));
     parameter SI.Time postFilterTimeConstant = 0.001 "Time constant of the postfilter (additional pole)" annotation(Dialog(group="PID parameters"));
-    parameter SI.Torque maxOutput = gp.SMparameters.Tmax "The controllers output are limited within [-maxOutput,maxOutput]" annotation(Dialog(group="PID parameters"));
+    parameter SI.Torque maxOutput = gp.SMparameters.Tmax "The controllers output are limited within [-maxOutput,maxOutput]" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax, sostituire con qualcosa
 
 // Inverse kinematic
     parameter Boolean limitOutputs = true "=true, if you want to limit the outputs within [minLength,maxLength]"
