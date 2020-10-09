@@ -1,8 +1,8 @@
 within StewartPlatform.ReferenceSignals;
 
 model LinearTrajectory "The outputs are the position and orientation of the platform to follow a linear trajectory with constant speed"
-  extends StewartPlatform.Icons.LinearTrajectory;
-  extends PartialTrajectoryModel;
+    extends StewartPlatform.Icons.LinearTrajectory; // Icon
+    extends PartialTrajectoryModel;
 
     //Constant speed
     final parameter SI.Velocity v[3] = (stopPosition-startPosition)/transitionTime

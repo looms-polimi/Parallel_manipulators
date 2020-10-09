@@ -1,6 +1,6 @@
 within StewartPlatform;
 
-package Tests "Tests to check the correctness of the models"
-  extends Modelica.Icons.UtilitiesPackage;
+package Tests "Library of tests for debugging"
+  extends StewartPlatform.Icons.Tests; // Icon
   
 end Tests;

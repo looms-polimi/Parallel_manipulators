@@ -1,7 +1,7 @@
 within StewartPlatform.Functions;
 
 function jointsCoordinates "Return a vector with the joints coordinates of a disc resolved in the frame of the disc to which they belong"
-    extends Modelica.Icons.Function;
+    extends StewartPlatform.Icons.Function; // Icon
 
     // Input & Output
     input StewartPlatform.Types.DiscParameters discParameters "Disc parameters";

@@ -1,7 +1,7 @@
 within StewartPlatform.Functions;
 
 function validPose "Return true if the input pose belongs to the operativity region"
-  extends Modelica.Icons.Function;
+    extends StewartPlatform.Icons.Function; // Icon
 
   //Input & Output
     input StewartPlatform.Types.DiscParameters base "Base parameters";

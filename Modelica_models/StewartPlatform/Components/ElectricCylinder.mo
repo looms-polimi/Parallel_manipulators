@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model ElectricCylinder "Mechanical linear drive unit with piston rod"
-  extends StewartPlatform.Icons.ElectricCylinder;
+  extends StewartPlatform.Icons.ElectricCylinder; // Icon
   extends StewartPlatform.Components.PartialElectricCylinder;
 
 // Models  

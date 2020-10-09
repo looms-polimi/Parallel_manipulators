@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-model Parallelogram1 "Parallelogram structure used for the lower arms of a Delta robot"
+model Parallelogram1 "Parallelogram structure used for the lower arms of a Delta Robot"
     extends DeltaRobot.Icons.Parallelogram; // Icon
     extends PartialParallelogram;
 

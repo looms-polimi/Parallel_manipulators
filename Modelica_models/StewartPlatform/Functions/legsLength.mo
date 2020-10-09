@@ -1,7 +1,7 @@
 within StewartPlatform.Functions;
 
 function legsLength "Return the lengths of all six legs for a given platform pose"
-    extends Modelica.Icons.Function;
+        extends StewartPlatform.Icons.Function; // Icon
 
     // Input & Output
         input StewartPlatform.Types.DiscParameters base "Base parameters";

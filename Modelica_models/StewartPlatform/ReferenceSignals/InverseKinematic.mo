@@ -1,7 +1,7 @@
 within StewartPlatform.ReferenceSignals;
 
 model InverseKinematic "The outputs are the six leg lengths required to have the input pose"
-  extends StewartPlatform.Icons.InverseKinematic;
+    extends StewartPlatform.Icons.InverseKinematic; // Icon
 
 // Imports
     import ModelicaServices.Machine.eps; //this constant is used to verify if there is a saturation
@@ -89,4 +89,5 @@ equation
   legAcceleration=velDerivative.y;
 
   connect(deMux.poseIn, pose) annotation (Line(points={{-63,0},{-90,0}}, color={0,0,0}));
+  
 end InverseKinematic;

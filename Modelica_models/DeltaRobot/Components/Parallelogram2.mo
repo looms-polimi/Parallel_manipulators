@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-model Parallelogram2 "Parallelogram structure used for the lower arms of a Delta robot"
+model Parallelogram2 "Parallelogram structure used for the lower arms of a Delta Robot"
     extends DeltaRobot.Icons.Parallelogram; // Icon
     extends PartialParallelogram;
     Modelica.Mechanics.MultiBody.Joints.UniversalSpherical longSide1(sphereDiameter = sphereDiameter)  annotation(

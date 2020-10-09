@@ -8,7 +8,9 @@ package Units "Library of new type and unit definitions"
         down "down: direction from x-y plane along negative z axis") 
             "Enumeration used to select the cylinder direction in the model 'Disc'";
 
-    type PolePairs = Integer(
-        final quantity="PolePairs",
-        min=1);
+    type SwitchTimeDef = enumeration(
+        periods   "periods: define the duration of each signal",
+        swithInstants   "swithInstants: define when to switch between two signals") 
+            "Enumeration used to select how to define the switch time instants.";
+
 end Units;

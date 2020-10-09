@@ -1,6 +1,6 @@
 within StewartPlatform;
 
-package ReferenceSignals "Blocks used to generate position and orientation reference signals for a Stewart platform"
-  extends Modelica.Icons.SourcesPackage;
+package ReferenceSignals "Library of models to define reference trajectories"
+  extends StewartPlatform.Icons.ReferenceSignals; // Icon
 
 end ReferenceSignals;

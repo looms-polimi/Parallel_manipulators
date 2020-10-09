@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-partial model PartialParallelogram "Partial model of a parallelogram structure to model the lower arms of a Delta robot"
+partial model PartialParallelogram "Partial model of a parallelogram structure to model the lower arms of a Delta Robot"
 
     // Parameters
     parameter DeltaRobot.Types.ArmParameters armParameters "Arm parameters";

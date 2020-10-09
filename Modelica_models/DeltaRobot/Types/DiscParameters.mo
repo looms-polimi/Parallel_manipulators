@@ -12,4 +12,5 @@ record DiscParameters "Parameters of a cylindrical disc"
     final parameter SI.Area area(min=0) = De^2*pi/4 "Disc base area";
     final parameter SI.Volume volume(min=0) = area*thickness "Disc volume";
     final parameter SI.Density density = mass/volume "Disc density";
+    
 end DiscParameters;

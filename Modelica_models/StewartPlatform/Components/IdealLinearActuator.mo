@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model IdealLinearActuator "Model of a linear actuator with controllable length and first order dynamic motion"
-  extends StewartPlatform.Icons.IdealLinearActuator;
+  extends StewartPlatform.Icons.IdealLinearActuator; // Icon
   extends StewartPlatform.Components.PartialElectricCylinder;
 
 // Imports

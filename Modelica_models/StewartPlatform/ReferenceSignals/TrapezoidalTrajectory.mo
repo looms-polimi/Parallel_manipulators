@@ -1,8 +1,7 @@
 within StewartPlatform.ReferenceSignals;
 
-model TrapezoidalTrajectory "The outputs are the position and orientation of the platform to follow a line with a trapezoidal velocity profile (constant orientation
-  )"
-  extends StewartPlatform.Icons.TrapezoidalTrajectory;
+model TrapezoidalTrajectory "The outputs are the position and orientation of the platform to follow a line with a trapezoidal velocity profile (constant orientation)"
+  extends StewartPlatform.Icons.TrapezoidalTrajectory; // Icon
   extends PartialTrajectoryModel(final transitionTime=Ti+Tc+Tf,
   final rotationType_stop, final n_stop, final angle_stop, final n_x_stop, final n_y_stop, final sequence_stop,final angles_stop);
 

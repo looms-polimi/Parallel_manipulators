@@ -1,7 +1,7 @@
 within StewartPlatform.Interfaces;
 
 model PoseMux "Shrink the variables of a 'Pose' connector"
-    //extends StewartPlatform.Icons.PoseDeMux; // Icon
+    //extends StewartPlatform.Icons.PoseMux; // Icon
     import Modelica.Blocks.Interfaces.*;
 
   // Models

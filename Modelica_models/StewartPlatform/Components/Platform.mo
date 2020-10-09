@@ -1,6 +1,7 @@
 within StewartPlatform.Components;
 
-model Platform "Platform of a Stewart platform"
+model Platform "Platform of a Stewart Platform"
+  extends StewartPlatform.Icons.Platform; // Icon
   extends Disc(final direction=StewartPlatform.Types.Units.Direction.up, final discParameters = if useGlobalParameters then gp.platform else platform,
       bodyCylinder(
       final r_0(each fixed=fixInitPosition, start=if useGlobalParameters then gp.initPlatformPos else initPosition),
@@ -67,11 +68,4 @@ model Platform "Platform of a Stewart platform"
     final parameter SI.Angle initAngles[3]=if useGlobalParameters then gp.initAngles else Frames.axesRotationsAngles(R_rel,initSequence)
     "Initial values of angles to rotate base frame around 'initSequence' axes into platform frame; used to initialize the model";
 
-  annotation (Icon(graphics={Text(
-          extent={{-100,-50},{-50,-100}},
-          lineColor={0,0,0},
-          fillColor={175,175,175},
-          fillPattern=FillPattern.Solid,
-          textStyle={TextStyle.Bold},
-          textString="P")}));
 end Platform;

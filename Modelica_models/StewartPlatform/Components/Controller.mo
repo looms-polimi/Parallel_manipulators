@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model Controller "Cascade of controllers to control the axes"
-  extends StewartPlatform.Icons.Controller;
+    extends StewartPlatform.Icons.Controller; // Icon
 
 // Parameters
     outer StewartPlatform.Components.GlobalParameters gp "Object with all global parameters";

@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
-model IdealSixLegs "Set of six legs of a Stewart platform appropiately connected, composed of ideal linear actuators"
-  extends StewartPlatform.Icons.SixLegs;
+model IdealSixLegs "Set of six legs of a Stewart Platform appropiately connected, composed of ideal linear actuators"
+  extends StewartPlatform.Icons.IdealSixLegs; // Icon
 
 // Imports
   import StewartPlatform.Functions.*;
@@ -422,9 +422,5 @@ equation
   connect(lengthRef[4], idealLeg4.lengthRef) annotation (Line(points={{-120,3.33333},{-0.2,3.33333},{-0.2,4.44089e-016},{7.8,4.44089e-016}}, color={0,0,127}));
   connect(lengthRef[5], idealLeg5.lengthRef) annotation (Line(points={{-120,10},{29.8,10},{29.8,0},{37.8,0}}, color={0,0,127}));
   connect(lengthRef[6], idealLeg6.lengthRef) annotation (Line(points={{-120,16.6667},{59.8,16.6667},{59.8,4.44089e-016},{67.8,4.44089e-016}}, color={0,0,127}));
-  annotation (Icon(graphics={Text(
-          extent={{-28,26},{28,-28}},
-          lineColor={0,0,0},
-          textString="Ideal",
-          textStyle={TextStyle.UnderLine})}));
+  
 end IdealSixLegs;

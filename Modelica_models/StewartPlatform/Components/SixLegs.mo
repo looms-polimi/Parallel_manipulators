@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
-model SixLegs "Set of six legs of a Stewart platform appropiately connected, composed of electric cylinders and servo motors"
-    extends StewartPlatform.Icons.SixLegs;
+model SixLegs "Set of six legs of a Stewart Platform appropiately connected, composed of electric cylinders and servo motors"
+    extends StewartPlatform.Icons.SixLegs; // Icon
 
 // Imports
     import StewartPlatform.Functions.*;

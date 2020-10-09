@@ -1,13 +1,13 @@
 within StewartPlatform.ReferenceSignals;
 
 model Switch2 "Switch between two or more Pose signals, the definition of the swith times is not required"
-  extends StewartPlatform.Icons.Switch2;
+  extends StewartPlatform.Icons.Switch2; // Icon
 
   //Parameters
-    parameter Integer n(min=2) = 2 "Number of different input signals";
+  parameter Integer n(min=2) = 2 "Number of different input signals";
 
   //Variables
-    Integer count "Number of the current signal";
+  Integer count "Number of the current signal";
 
 public
   Interfaces.Pose poseInput[n] annotation (Placement(transformation(extent={{-120,-30},{-60,30}}), iconTransformation(extent={{-120,-30},{-60,30}})));

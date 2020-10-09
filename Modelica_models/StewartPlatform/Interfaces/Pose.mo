@@ -1,7 +1,7 @@
 within StewartPlatform.Interfaces;
 
 expandable connector Pose "Position and orientation of a rigid object in space"
-    //extends StewartPlatform.Icons.Pose; // Icon
+    extends StewartPlatform.Icons.Pose; // Icon
 
     SI.Position position[3] "Position";
     Modelica.Mechanics.MultiBody.Types.RotationSequence sequence(min={1,1,1},max={3,3,3}) "Sequence of rotation axes";

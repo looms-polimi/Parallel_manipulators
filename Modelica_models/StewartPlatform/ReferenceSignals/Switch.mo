@@ -1,7 +1,7 @@
 within StewartPlatform.ReferenceSignals;
 
 model Switch "Switch between two or more Pose signals"
-  extends StewartPlatform.Icons.Switch;
+    extends StewartPlatform.Icons.Switch; // Icon
 
   //Imports
     import StewartPlatform.Types.SwitchTimeDef;
@@ -59,4 +59,5 @@ equation
 
   connect(deMux.pose, poseInput) annotation (Line(points={{-55,0},{-90,0}}, color={0,0,0}));
   connect(poseOutput, mux.pose) annotation (Line(points={{90,0},{59,0}}, color={0,0,0}));
+  
 end Switch;

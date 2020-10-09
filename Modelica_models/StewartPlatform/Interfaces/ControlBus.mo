@@ -1,7 +1,7 @@
 within StewartPlatform.Interfaces;
 
 expandable connector ControlBus "Data bus for all axes"
-    //extends StewartPlatform.Icons.ControlBus; // Icon
+    extends StewartPlatform.Icons.ControlBus; // Icon
 
     AxisControlBus axisControlBus1 "Bus of axis 1";
     AxisControlBus axisControlBus2 "Bus of axis 2";

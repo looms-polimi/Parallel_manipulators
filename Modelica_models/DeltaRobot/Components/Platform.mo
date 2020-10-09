@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-model Platform "Platform of a Delta robot"
+model Platform "Platform of a Delta Robot"
     extends Disc(final direction=DeltaRobot.Types.Units.Direction.down, final discParameters=if useGlobalParameters then gp.platform else platform,
       bodyCylinder(
       final r_0(each fixed=if useGlobalParameters then gp.fixInitPosition else fixInitPosition, start=if useGlobalParameters then gp.initPlatformPos else initPlatformPos),

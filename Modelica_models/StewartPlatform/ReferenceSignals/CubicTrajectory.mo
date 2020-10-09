@@ -1,8 +1,8 @@
 within StewartPlatform.ReferenceSignals;
 
 model CubicTrajectory "The outputs are the position and orientation of the platform to follow a line with a cubic eqution of motion"
-  extends StewartPlatform.Icons.CubicTrajectory;
-  extends PartialTrajectoryModel;
+    extends StewartPlatform.Icons.CubicTrajectory; // Icons
+    extends PartialTrajectoryModel;
 
   //Imports
     import ModelicaServices.Machine.eps;

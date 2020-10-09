@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model GlobalParameters "This model includes all parameters that are shared between the models of this library"
-    extends StewartPlatform.Icons.GlobalParameters; // Icon
+        extends StewartPlatform.Icons.GlobalParameters; // Icon
 
     // Imports
         import Modelica.Mechanics.MultiBody.Frames;

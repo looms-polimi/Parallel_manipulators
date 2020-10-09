@@ -1,4 +1,5 @@
 package DeltaRobot "Library for modelling of Delta Robots"
+    extends DeltaRobot.Icons.DeltaRobot;
 
 // Imports
     import SI = Modelica.Units.SI;

@@ -32,4 +32,5 @@ record ArmParameters "Parameters of a Delta Robot's arm"
     parameter SI.Distance univCylinderLength = 1/30 "Length of cylinder representing the universal joint" annotation(Dialog(group="Animation"));
     parameter SI.Diameter univCylinderDiameter = 1/30 "Diameter of cylinder representing the universal joint" annotation(Dialog(group="Animation"));
     parameter SI.Diameter sphereDiameter = 1/30 "Diameter of sphere representing the spherical joint" annotation(Dialog(group="Animation"));
+    
 end ArmParameters;

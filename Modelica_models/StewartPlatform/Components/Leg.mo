@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model Leg "Six-degree-of-freedom leg with electric cylinder and servo motor"
-  extends StewartPlatform.Icons.Leg;
+  extends StewartPlatform.Icons.Leg; // Icon
 
 // Imports
   import Modelica.Blocks.Types.Init;

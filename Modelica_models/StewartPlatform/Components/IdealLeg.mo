@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model IdealLeg "Six-degrees-of-freedom leg with controlled length composed of an ideal linear actuator"
-    extends StewartPlatform.Icons.IdealLeg;
+    extends StewartPlatform.Icons.IdealLeg; // Icon
 
 // Universal joint
     parameter SI.Angle alpha=0 "Orientation of the universal joint: rotation around z-axis from frame_a" annotation (Dialog(group="Universal joint"));

@@ -1,7 +1,7 @@
 within StewartPlatform.Types;
 
 record ElectricCylinderParameters "Parameters of an electric cylinder with spindle drive"
-    //extends StewartPlatform.Icons.Record; // Icon
+    extends StewartPlatform.Icons.Record; // Icon
 
     // Cylinder parameters
     parameter Units.Pitch spindlePitch = 5 "Spindle pitch";
@@ -30,4 +30,5 @@ record ElectricCylinderParameters "Parameters of an electric cylinder with spind
     final parameter SI.Distance maxLength = minLength+workingStroke "Max value for variable 'length'";
     final parameter SI.Length minStroke(max=0) = -workingStroke/2 "Min value for variable 'stroke'";
     final parameter SI.Length maxStroke(min=0) = workingStroke/2 "Max value for variable 'stroke'";
+    
 end ElectricCylinderParameters;

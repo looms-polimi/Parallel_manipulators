@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model SpindleDrive "Spindle drive transforming rotational into translational motion"
-  extends StewartPlatform.Icons.SpindleDrive;
+  extends StewartPlatform.Icons.SpindleDrive; // Icon
 
 // Imports
   import StewartPlatform.Types.Units.Pitch;

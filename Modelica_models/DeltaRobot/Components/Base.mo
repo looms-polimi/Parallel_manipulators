@@ -1,6 +1,6 @@
 within DeltaRobot.Components;
 
-model Base "Base of a Delta robot"    
+model Base "Base of a Delta Robot"    
     extends Disc(final direction=DeltaRobot.Types.Units.Direction.up, final discParameters=if useGlobalParameters then gp.base else base);
 
     // Parameters

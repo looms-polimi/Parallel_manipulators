@@ -1,7 +1,8 @@
 within StewartPlatform.Scenarios;
 
 model IdealStewartPlatform_Scenario1
-  extends Modelica.Icons.Example;
+  extends StewartPlatform.Icons.Scenario; // Icon
+
   inner StewartPlatform.Components.GlobalParameters gp annotation(
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(

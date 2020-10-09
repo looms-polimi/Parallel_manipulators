@@ -5,6 +5,7 @@ Components
 ControlBus
 Controller
 CubicTrajectory
+DeltaRobot
 Disc
 Function
 Functions
@@ -24,6 +25,7 @@ PoseDeMux
 Record
 ReferenceSignals
 RefToBus
+Scenario
 Scenarios
 ServoMotor
 Switch2

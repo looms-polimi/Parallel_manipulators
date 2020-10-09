@@ -1,6 +1,7 @@
 within StewartPlatform.Components;
 
-model Base "Base of a Stewart platform"
+model Base "Base of a Stewart Platform"
+    extends StewartPlatform.Icons.Base; // Icon
     extends Disc(final direction=StewartPlatform.Types.Units.Direction.down, final discParameters=if useGlobalParameters then gp.base else base);
 
 // Imports
@@ -20,11 +21,4 @@ equation
   connect(fixed.frame_b, fixedRotation.frame_a) annotation(Line(points = {{-80, 2}, {-80, 2}, {-80, 18}, {-52, 18}, {-52, 18}}));
   connect(fixedRotation.frame_b, bodyCylinder.frame_a) annotation(Line(points = {{-32, 18}, {-20, 18}, {-20, 0}, {-20, 0}}, color = {95, 95, 95}));
 
-  annotation (Icon(graphics={Text(
-          extent={{-100,-50},{-50,-100}},
-          lineColor={0,0,0},
-          fillColor={175,175,175},
-          fillPattern=FillPattern.Solid,
-          textStyle={TextStyle.Bold},
-          textString="B")}));
 end Base;

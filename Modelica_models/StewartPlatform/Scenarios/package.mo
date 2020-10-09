@@ -1,5 +1,6 @@
 within StewartPlatform;
 
-package Scenarios
-  extends Modelica.Icons.ExamplesPackage;
+package Scenarios "Library of scenarios ready to be simulated"
+  extends StewartPlatform.Icons.Scenarios; // Icon
+
 end Scenarios;

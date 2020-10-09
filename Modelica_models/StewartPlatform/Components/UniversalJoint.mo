@@ -1,7 +1,7 @@
 within StewartPlatform.Components;
 
 model UniversalJoint "Universal joint with additional fixed rotation"
-    extends StewartPlatform.Icons.UniversalJoint;
+  extends StewartPlatform.Icons.UniversalJoint; // Icon
 
 // Parameters
   parameter SI.Angle alpha = 0 "Orientation of the universal joint: fix rotation around z-axis from frame_a";

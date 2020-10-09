@@ -1,7 +1,7 @@
 within StewartPlatform.Functions;
 
 function ujAngles "Return the two angles of the universal joint for a given direction"
-  extends Modelica.Icons.Function;
+    extends StewartPlatform.Icons.Function; // Icon
   
   //Imports
     import Modelica.Math.atan2;
