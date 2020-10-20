@@ -3,6 +3,7 @@ GlobalParameters
 Base
 Platform
 UniversalJoint
+SphericalJoint
 PartialElectricCylinder
 IdealLinearActuator
 IdealLeg
@@ -13,3 +14,4 @@ Controller
 Leg
 ServoMotor
 SixLegs
+NEWSixLegs

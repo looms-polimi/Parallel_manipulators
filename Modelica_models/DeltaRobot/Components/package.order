@@ -7,6 +7,7 @@ PartialActuator
 IdealActuatorPos
 IdealActuatorVel
 ServoMotor
+SphericalJoint
 PartialParallelogram
 Parallelogram1
 Parallelogram2

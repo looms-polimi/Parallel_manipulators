@@ -19,9 +19,11 @@ Junction
 Leg
 LinearTrajectory
 Path
+Paths
 Platform
 Pose
 PoseDeMux
+PoseMux
 Record
 ReferenceSignals
 RefToBus
@@ -29,6 +31,7 @@ Scenario
 Scenarios
 ServoMotor
 SixLegs
+SphericalJoint
 SpindleDrive
 StepTrajectory
 StewartPlatform

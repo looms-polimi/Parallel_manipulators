@@ -7,7 +7,7 @@ model SixLegs "Set of six legs of a Stewart Platform appropiately connected, com
     import StewartPlatform.Functions.*;
     import Modelica.Blocks.Types.Init;
 
-// Parameter
+// Parameters
     outer StewartPlatform.Components.GlobalParameters gp;
 
     parameter StewartPlatform.Types.DiscParameters base = gp.base "Base parameters";

@@ -1,9 +1,9 @@
 within StewartPlatform.Tests;
 
 model ElectricCylinder_test
-  parameter Types.ElectricCylinderParameters ECparameters "Electric cylinder parameters";
+  parameter Types.ElectricCylinderParameters electricCylinderParameters "Electric cylinder parameters";
   
-  StewartPlatform.Components.ElectricCylinder electricCylinder(pj_initialVelFixed = true)  annotation(
+  StewartPlatform.Components.ElectricCylinder electricCylinder(electricCylinderParameters(initialVelFixed = true))  annotation(
     Placement(visible = true, transformation(origin = {2, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -11,9 +11,9 @@ model ElectricCylinder_test
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.Position position annotation(
     Placement(visible = true, transformation(origin = {-94, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 1 / electricCylinder.ECparameters.ratio) annotation(
+  Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 1 / electricCylinder.electricCylinderParameters.ratio) annotation(
     Placement(visible = true, transformation(origin = {-58, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine sine(amplitude = ECparameters.workingStroke / 2,f = 1, offset = ECparameters.minLength + ECparameters.workingStroke / 2) annotation(
+  Modelica.Blocks.Sources.Sine sine(amplitude = electricCylinderParameters.workingStroke / 2,f = 1, offset = electricCylinderParameters.minLength + electricCylinderParameters.workingStroke / 2) annotation(
     Placement(visible = true, transformation(origin = {-126, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Components.IdealGear idealGear1(ratio = 1 / electricCylinder.spindleDrive.ratio) annotation(
     Placement(visible = true, transformation(origin = {-30, 34}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

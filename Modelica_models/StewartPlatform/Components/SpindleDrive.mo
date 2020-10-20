@@ -8,7 +8,7 @@ model SpindleDrive "Spindle drive transforming rotational into translational mot
 
 // Parameters
   parameter Pitch spindlePitch = 5 "Spindle pitch";
-  final parameter Real ratio(final unit = "rad/mm", min = 0) = 1000 * 2 * pi / spindlePitch "Transmission ratio (flangeR.phi/flangeT.s)";
+  final parameter Real ratio = 1000 * 2 * pi / spindlePitch "Transmission ratio (flangeR.phi/flangeT.s)";
 
 // Models
   Modelica.Mechanics.Rotational.Interfaces.Flange_a flangeR "Flange of rotational shaft" annotation(Placement(transformation(extent = {{-110, -10}, {-90, 10}})));

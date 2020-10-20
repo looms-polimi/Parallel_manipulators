@@ -24,7 +24,5 @@ equation
     Line(points = {{0, 30}, {2, 30}, {2, 20}, {0, 20}}, color = {95, 95, 95}, thickness = 0.5));
   connect(controller.controlBus, sixLegs.controlBus);
   connect(linearTrajectory.pose, controller.inputPose);
-  annotation(
-    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.002),
-    __OpenModelica_commandLineOptions = "--maxSizeLinearTearing=350 and --maxSizeNonlinearTearing=350 --matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst");
+  
 end StewartPlatform_Scenario1;

@@ -27,7 +27,6 @@ model IdealLinearActuator "Model of a linear actuator with controllable length a
     annotation (Placement(transformation(extent={{-32,60},{-52,80}})));
 
 equation
-  drivingTorque=feedForce*ECparameters.spindlePitch/(1000*2*pi);
 
   connect(lengthRef, limiter.u) annotation (Line(points={{0,102},{0,70},{-30,70}}, color={0,0,127}));
   connect(position.s_ref, firstOrder.y) annotation (Line(points={{-24,28},{-39,28}}, color={0,0,127}));
