@@ -3,7 +3,7 @@ within StewartPlatform.Components;
 partial model PartialElectricCylinder "Partial model of an electric cylinder"
 
 // Parameters
-  parameter Types.ElectricCylinderParameters electricCylinderParameters "Parameters of the electric cylinder";  
+  parameter StewartPlatform.Types.ElectricCylinderParameters electricCylinderParameters "Parameters of the electric cylinder";  
 
 // Variables
   SI.Length stroke "Current stroke, (=length-minPistonLength-boxLength-workingStroke/2)";

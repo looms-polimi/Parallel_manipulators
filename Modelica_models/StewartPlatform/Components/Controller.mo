@@ -4,30 +4,27 @@ model Controller "Cascade of controllers to control the axes"
     extends StewartPlatform.Icons.Controller; // Icon
 
 // Parameters
-    outer StewartPlatform.Components.GlobalParameters gp "Object with all global parameters";
+    outer StewartPlatform.Components.GlobalParameters gp;
 
-    parameter StewartPlatform.Types.DiscParameters platform = gp.platform "Platform parameters";
-    parameter StewartPlatform.Types.DiscParameters base = gp.base "Base parameters";
-    parameter StewartPlatform.Types.Units.Pitch spindlePitch = gp.ECparameters.spindlePitch "Spindle pitch of the electric cylinder for rotation-dispacement conversion";
-    parameter Real ratio = gp.ECparameters.ratio "Transmission ratio (servomotor.phi/spindle.phi)";
+    parameter StewartPlatform.Types.DiscParameters base = gp.base "Parameters of the platform";
+    parameter StewartPlatform.Types.DiscParameters platform = gp.platform "Parameters of the base";
+    
+    parameter StewartPlatform.Types.Units.Pitch spindlePitch = gp.electricCylinderParameters[1].spindlePitch "Spindle pitch of the electric cylinder for rotation-dispacement conversion";
+    parameter Real ratio = gp.electricCylinderParameters[1].ratio "Transmission ratio (servomotor.phi/spindle.phi)";
     parameter SI.Torque initOutputs = 0.01107 "Initial value of the torque commands (Controller outputs)";
 
 // Controller
     parameter Modelica.Blocks.Types.SimpleController controllerType = Modelica.Blocks.Types.SimpleController.PID "Type of controllers" annotation(Dialog(group="PID parameters"));
-    parameter Real P(min=0, unit="1") = gp.SMparameters.Tmax/500 "Proportional action" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax/500, sostituire con qualcosa di corretto
-    parameter SI.Time Ti(min=Modelica.Constants.small) = 0.5 "Time constant of Integrator blocks"
-      annotation(Dialog(group="PID parameters"));
-    parameter SI.Time Td(min=0)= 0.01 "Time constant of Derivative blocks"
-      annotation(Dialog(group="PID parameters"));
+    parameter Real P(min=0, unit="1") = gp.servoMotorParameters[1].Tmax/500 "Proportional action" annotation(Dialog(group="PID parameters"));
+    parameter SI.Time Ti(min=Modelica.Constants.small) = 0.5 "Time constant of Integrator blocks" annotation(Dialog(group="PID parameters"));
+    parameter SI.Time Td(min=0)= 0.01 "Time constant of Derivative blocks" annotation(Dialog(group="PID parameters"));
     parameter SI.Time preFilterTimeConstant = 0.1 "Time constant of the prefilter applied to legth ref." annotation(Dialog(group="PID parameters"));
     parameter SI.Time postFilterTimeConstant = 0.001 "Time constant of the postfilter (additional pole)" annotation(Dialog(group="PID parameters"));
-    parameter SI.Torque maxOutput = gp.SMparameters.Tmax "The controllers output are limited within [-maxOutput,maxOutput]" annotation(Dialog(group="PID parameters")); //! PRIMA ERA = gp.SMparameters.Tmax, sostituire con qualcosa
+    parameter SI.Torque maxOutput = gp.servoMotorParameters[1].Tmax "The controllers output are limited within [-maxOutput,maxOutput]" annotation(Dialog(group="PID parameters"));
 
 // Inverse kinematic
-    parameter Boolean limitOutputs = true "=true, if you want to limit the outputs within [minLength,maxLength]"
-      annotation(Dialog(group="Inverse kinematic - Limits"), choices(checkBox=true));
-    parameter Boolean stopWhenSaturated = true "When a saturation is detected all output signals maintein their current values until all output signals return within the limits"
-     annotation(Dialog(group="Inverse kinematic - Limits"));
+    parameter Boolean limitOutputs = true "=true, if you want to limit the outputs within [minLength,maxLength]" annotation(Dialog(group="Inverse kinematic - Limits"), choices(checkBox=true));
+    parameter Boolean stopWhenSaturated = true "When a saturation is detected all output signals maintein their current values until all output signals return within the limits" annotation(Dialog(group="Inverse kinematic - Limits"));
     parameter SI.Length maxLength = gp.maxLength "Max leg length" annotation(Dialog(group="Inverse kinematic - Limits"));
     parameter SI.Length minLength = gp.minLength "Min leg length" annotation(Dialog(group="Inverse kinematic - Limits"));
 
@@ -37,8 +34,7 @@ model Controller "Cascade of controllers to control the axes"
       annotation(Dialog(group="Inverse kinematic - Additional parameters (no effects on the simulation)"));
 
 // Models
-  Interfaces.Pose inputPose "Desired pose for the platform resolved in base frame"
-    annotation (Placement(transformation(extent={{-120,-30},{-60,30}}), iconTransformation(extent={{-120,-30},{-60,30}})));
+  Interfaces.Pose inputPose "Desired pose for the platform resolved in base frame" annotation (Placement(transformation(extent={{-120,-30},{-60,30}}), iconTransformation(extent={{-120,-30},{-60,30}})));
   ReferenceSignals.InverseKinematic inverseKinematic(
     platform=platform,
     base=base,
@@ -87,11 +83,11 @@ equation
   connect(postFilter[5].y, controlBus.axisControlBus5.refTorque);
   connect(postFilter[6].y, controlBus.axisControlBus6.refTorque);
 
-  connect(PID[1].u_m, controlBus.axisControlBus1.encoder) annotation (Line(points={{44,-12},{44,-40},{100.05,-40},{100.05,0.05}}, color={0,0,127}));
-  connect(PID[2].u_m, controlBus.axisControlBus2.encoder);
-  connect(PID[3].u_m, controlBus.axisControlBus3.encoder);
-  connect(PID[4].u_m, controlBus.axisControlBus4.encoder);
-  connect(PID[5].u_m, controlBus.axisControlBus5.encoder);
-  connect(PID[6].u_m, controlBus.axisControlBus6.encoder);
+  connect(PID[1].u_m, controlBus.axisControlBus1.angularPos) annotation (Line(points={{44,-12},{44,-40},{100.05,-40},{100.05,0.05}}, color={0,0,127}));
+  connect(PID[2].u_m, controlBus.axisControlBus2.angularPos);
+  connect(PID[3].u_m, controlBus.axisControlBus3.angularPos);
+  connect(PID[4].u_m, controlBus.axisControlBus4.angularPos);
+  connect(PID[5].u_m, controlBus.axisControlBus5.angularPos);
+  connect(PID[6].u_m, controlBus.axisControlBus6.angularPos);
   
 end Controller;

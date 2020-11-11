@@ -4,19 +4,20 @@ model Leg "Six-degree-of-freedom leg with electric cylinder and servo motor"
   extends StewartPlatform.Icons.Leg; // Icon
 
 // Imports
-  import Modelica.Blocks.Types.Init;
+  import StewartPlatform.Types.*;
 
-// Universal joint
-    parameter StewartPlatform.Types.UniversalJointParameters universalJointParameters "Parameters of the universal joint" annotation (Dialog(group="Universal joint"));
+// Parameters
+    // Universal joint
+    parameter UniversalJointParameters universalJointParameters "Parameters of the universal joint" annotation (Dialog(group="Universal joint"));
 
-// Electric Cylinder
-    parameter StewartPlatform.Types.ElectricCylinderParameters electricCylinderParameters "Parameters of the electric cylinder" annotation (Dialog(group="Electric cylinder"));
+    // Electric Cylinder
+    parameter ElectricCylinderParameters electricCylinderParameters "Parameters of the electric cylinder" annotation (Dialog(group="Electric cylinder"));
 
-// Servo Motor
-    parameter StewartPlatform.Types.ServoMotorParameters servoMotorParameters "Parameters of the servo motor" annotation (Dialog(group="Servo motor"));
+    // Servo Motor
+    parameter ServoMotorParameters servoMotorParameters "Parameters of the servo motor" annotation (Dialog(group="Servo motor"));
 
-// Spherical joint
-    parameter StewartPlatform.Types.SphericalJointParameters sphericalJointParameters "Parameters of the spherical joint" annotation (Dialog(group="Spherical joint"));
+    // Spherical joint
+    parameter SphericalJointParameters sphericalJointParameters "Parameters of the spherical joint" annotation (Dialog(group="Spherical joint"));
 
 // Models
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a "Frame for connection with a base's joint frame" annotation (Placement(transformation(extent={{-140,-16},{-108,16}}), iconTransformation(extent={{-172,-16},{-140,16}})));
@@ -30,11 +31,7 @@ model Leg "Six-degree-of-freedom leg with electric cylinder and servo motor"
 
   SphericalJoint sphericalJoint(sphericalJointParameters=sphericalJointParameters) annotation (Placement(transformation(extent={{42,-10},{62,10}})));
   
-  StewartPlatform.Interfaces.AxisControlBus axisControlBus 
-    annotation (Placement(transformation(extent={{-110,56},{-90,76}}), iconTransformation(
-        extent={{-19,19},{19,-19}},
-        rotation=90,
-        origin={-101,65})));
+  StewartPlatform.Interfaces.AxisControlBus axisControlBus annotation (Placement(transformation(extent={{-110,56},{-90,76}}), iconTransformation(extent={{-19,19},{19,-19}},rotation=90,origin={-101,65})));
     
 equation
   connect(frame_a, universalJoint.frame_a) annotation(Line(points = {{-124, 0}, {-60, 0}}, color = {95, 95, 95}, thickness = 0.5));

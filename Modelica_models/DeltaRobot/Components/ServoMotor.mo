@@ -1,13 +1,13 @@
 within DeltaRobot.Components;
 
 model ServoMotor "Simplified model of a permanent magnet synchronous induction machine"
-  extends StewartPlatform.Icons.ServoMotor; // Icon
+  extends DeltaRobot.Icons.ServoMotor; // Icon
 
   // Imports
   import Modelica.Constants.inf;
 
   // Parameters
-  parameter StewartPlatform.Types.ServoMotorParameters servoMotorParameters "Parameters of the servo motor";
+  parameter DeltaRobot.Types.ServoMotorParameters servoMotorParameters "Parameters of the servo motor";
 
   // Variables
   SI.Angle phi "Absolute mechanical rotation angle (flange.phi)";
@@ -18,22 +18,16 @@ model ServoMotor "Simplified model of a permanent magnet synchronous induction m
   SI.Power Pmecc "Output mechanical power";
 
   // Models
-  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange "Shaft" 
-    annotation(Placement(transformation(extent = {{90, -10}, {110, 10}})));
-  StewartPlatform.Interfaces.AxisControlBus axisControlBus 
-    annotation(Placement(transformation(extent = {{-70, -10}, {-50, 10}}), iconTransformation(extent = {{-24, 24}, {24, -24}}, rotation = 90, origin = {-58, 4})));  
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange "Shaft" annotation(Placement(transformation(extent = {{90, -10}, {110, 10}})));
+  DeltaRobot.Interfaces.AxisControlBus axisControlBus annotation(Placement(transformation(extent = {{-70, -10}, {-50, 10}}), iconTransformation(extent = {{-24, 24}, {24, -24}}, rotation = 90, origin = {-58, 4})));  
 
 protected
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax = if servoMotorParameters.enableLimiter then servoMotorParameters.Tmax else inf, uMin = if servoMotorParameters.enableLimiter then -servoMotorParameters.Tmax else -inf) 
     annotation(Placement(transformation(extent = {{-40, -10}, {-20, 10}})));
-  Modelica.Mechanics.Rotational.Sources.Torque torque 
-    annotation(Placement(transformation(extent = {{60, -10}, {80, 10}})));
-  Modelica.Mechanics.Rotational.Sensors.AngleSensor angleSensor 
-    annotation(Placement(transformation(extent = {{80, -50}, {60, -30}})));
-  Modelica.Mechanics.Rotational.Sensors.SpeedSensor speedSensor 
-    annotation(Placement(transformation(extent = {{80, 30}, {60, 50}})));
-  Modelica.Mechanics.Rotational.Sensors.AccSensor accSensor 
-    annotation(Placement(visible = true, transformation(origin = {70, 70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+  Modelica.Mechanics.Rotational.Sources.Torque torque annotation(Placement(transformation(extent = {{60, -10}, {80, 10}})));
+  Modelica.Mechanics.Rotational.Sensors.AngleSensor angleSensor annotation(Placement(transformation(extent = {{80, -50}, {60, -30}})));
+  Modelica.Mechanics.Rotational.Sensors.SpeedSensor speedSensor annotation(Placement(transformation(extent = {{80, 30}, {60, 50}})));
+  Modelica.Mechanics.Rotational.Sensors.AccSensor accSensor annotation(Placement(visible = true, transformation(origin = {70, 70}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
 
 equation
   phi = angleSensor.phi;

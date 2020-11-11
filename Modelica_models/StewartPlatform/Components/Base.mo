@@ -4,9 +4,6 @@ model Base "Base of a Stewart Platform"
     extends StewartPlatform.Icons.Base; // Icon
     extends Disc(final direction=StewartPlatform.Types.Units.Direction.down, final discParameters=if useGlobalParameters then gp.base else base);
 
-// Imports
-    import Modelica.Mechanics.MultiBody.Frames;
-
 // Parameters
     outer StewartPlatform.Components.GlobalParameters gp;
 

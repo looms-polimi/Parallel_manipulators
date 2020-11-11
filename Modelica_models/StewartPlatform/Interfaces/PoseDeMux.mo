@@ -2,6 +2,7 @@ within StewartPlatform.Interfaces;
 
 model PoseDeMux "Expand the variables of a 'Pose' connector"
     extends StewartPlatform.Icons.PoseDeMux; // Icon
+    
     import Modelica.Blocks.Interfaces.*;
 
   // Models

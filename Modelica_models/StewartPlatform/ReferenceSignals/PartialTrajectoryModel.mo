@@ -71,18 +71,18 @@ partial model PartialTrajectoryModel "This model collects all the common paramet
     //(Orientation conversion)
     final parameter Frames.Orientation R_rel_start=if rotationType_start == Modelica.Mechanics.MultiBody.Types.RotationTypes.RotationAxis
                                                    then
-                                                   Frames.planarRotation(Modelica.Math.Vectors.normalizeWithAssert(n_start),Cv.from_deg(angle_start),0)
+                                                   Frames.planarRotation(Modelica.Math.Vectors.normalizeWithAssert(n_start),from_deg(angle_start),0)
                                                    else if rotationType_start == Modelica.Mechanics.MultiBody.Types.RotationTypes.TwoAxesVectors
                                                    then
-                                                   Frames.from_nxy(n_x_start, n_y_start) else Frames.axesRotations(sequence_start, Cv.from_deg(angles_start),zeros(3))
+                                                   Frames.from_nxy(n_x_start, n_y_start) else Frames.axesRotations(sequence_start, from_deg(angles_start),zeros(3))
                                                    "Start: fixed rotation object from base frame to platform frame";
 
     final parameter Frames.Orientation R_rel_stop=if rotationType_stop == Modelica.Mechanics.MultiBody.Types.RotationTypes.RotationAxis
                                                   then
-                                                  Frames.planarRotation(Modelica.Math.Vectors.normalizeWithAssert(n_stop),Cv.from_deg(angle_stop),0)
+                                                  Frames.planarRotation(Modelica.Math.Vectors.normalizeWithAssert(n_stop),from_deg(angle_stop),0)
                                                   else if rotationType_stop == Modelica.Mechanics.MultiBody.Types.RotationTypes.TwoAxesVectors
                                                   then
-                                                  Frames.from_nxy(n_x_stop, n_y_stop) else Frames.axesRotations(sequence_stop, Cv.from_deg(angles_stop),zeros(3))
+                                                  Frames.from_nxy(n_x_stop, n_y_stop) else Frames.axesRotations(sequence_stop, from_deg(angles_stop),zeros(3))
                                                   "Stop: fixed rotation object from base frame to platform frame";
 
 

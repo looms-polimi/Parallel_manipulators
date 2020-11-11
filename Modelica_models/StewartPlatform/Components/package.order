@@ -5,13 +5,10 @@ Platform
 UniversalJoint
 SphericalJoint
 PartialElectricCylinder
-IdealLinearActuator
-IdealLeg
-IdealSixLegs
 SpindleDrive
 ElectricCylinder
 Controller
 Leg
 ServoMotor
 SixLegs
-NEWSixLegs
+ServoMotor_invDyn

@@ -1,7 +1,7 @@
 within DeltaRobot.Types;
 
 record SphericalJointParameters "Parameters of the spherical joint model"
-    extends StewartPlatform.Icons.Record; // Icon
+    extends DeltaRobot.Icons.Record; // Icon
 
     parameter Boolean enforceStates = false "=true, if the variables of the spherical joint have priority to be selected as states" annotation (choices(checkBox=true));
     parameter Boolean useQuaternions = false "= true, if quaternions shall be used as states otherwise use 3 angles as states (provided 'enforceStates=true')" annotation (choices(checkBox=true));
