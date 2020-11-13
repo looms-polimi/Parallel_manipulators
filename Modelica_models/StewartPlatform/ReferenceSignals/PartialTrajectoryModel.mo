@@ -23,48 +23,48 @@ partial model PartialTrajectoryModel "This model collects all the common paramet
 
     parameter Modelica.Mechanics.MultiBody.Types.RotationTypes
       rotationType_start=Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence
-      "Start: type of rotation description" annotation(Dialog(group="Initial orientation", tab="Orientation"), Evaluate=true);
+      "Start: type of rotation description" annotation(Dialog(group="Initial orientation", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_start={1,0,0}
       "Start: axis of rotation in base frame (= same as in platform frame)"
-      annotation(Evaluate=true, Dialog(group="if rotationType_start = RotationAxis", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_start = RotationAxis", tab="Orientation"));
     parameter NonSI.Angle_deg angle_start=0
       "Start: angle to rotate base frame around axis n_start into platform frame"
       annotation(Dialog(group="if rotationType_start = RotationAxis", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_x_start={1,0,0}
       "Start: vector along x-axis of platform frame resolved in base frame"
-      annotation(Evaluate=true, Dialog(group="if rotationType_start = TwoAxesVectors", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_start = TwoAxesVectors", tab="Orientation"));
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_y_start={0,1,0}
       "Start: vector along y-axis of platform frame resolved in base frame"
-      annotation(Evaluate=true, Dialog(group="if rotationType_start = TwoAxesVectors", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_start = TwoAxesVectors", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.RotationSequence sequence_start(min={1,1,1},max={3,3,3}) = gp.initSequence "Start: sequence of rotation axes"
-      annotation (Evaluate=true,Dialog(group="if rotationType_start = PlanarRotationSequence", tab="Orientation"));
+      annotation (Dialog(group="if rotationType_start = PlanarRotationSequence", tab="Orientation"));
     parameter NonSI.Angle_deg angles_start[3]=to_deg(gp.initAngles)
       "Start: rotation angles around the axes defined in 'sequence_start'" annotation (Dialog(group="if rotationType_start = PlanarRotationSequence", tab="Orientation"));
 
     //Final orientation
     parameter Modelica.Mechanics.MultiBody.Types.RotationTypes
       rotationType_stop=Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence
-      "Stop: type of rotation description" annotation (Dialog(group="Final orientation", tab="Orientation"), Evaluate=true);
+      "Stop: type of rotation description" annotation (Dialog(group="Final orientation", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_stop=n_start
       "Stop: axis of rotation in base frame (= same as in platform frame)"
-      annotation(Evaluate=true, Dialog(group="if rotationType_stop = RotationAxis", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_stop = RotationAxis", tab="Orientation"));
     parameter NonSI.Angle_deg angle_stop=angle_start
       "Stop: angle to rotate base frame around axis n_stop into platform frame"
       annotation(Dialog(group="if rotationType_stop = RotationAxis", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_x_stop=n_x_start
       "Stop: vector along x-axis of platform frame resolved in base frame"
-      annotation(Evaluate=true, Dialog(group="if rotationType_stop = TwoAxesVectors", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_stop = TwoAxesVectors", tab="Orientation"));
     parameter Modelica.Mechanics.MultiBody.Types.Axis n_y_stop=n_y_start
       "Stop: vector along y-axis of platform frame resolved in base frame"
-      annotation(Evaluate=true, Dialog(group="if rotationType_stop = TwoAxesVectors", tab="Orientation"));
+      annotation(Dialog(group="if rotationType_stop = TwoAxesVectors", tab="Orientation"));
 
     parameter Modelica.Mechanics.MultiBody.Types.RotationSequence sequence_stop(min={1,1,1},max={3,3,3}) = sequence_start "Stop: sequence of rotation axes"
-      annotation (Evaluate=true,Dialog(group="if rotationType_stop = PlanarRotationSequence", tab="Orientation"));
+      annotation (Dialog(group="if rotationType_stop = PlanarRotationSequence", tab="Orientation"));
     parameter NonSI.Angle_deg angles_stop[3]=angles_start
       "Stop: rotation angles around the axes defined in 'sequence_stop'" annotation (Dialog(group="if rotationType_stop = PlanarRotationSequence", tab="Orientation"));
 

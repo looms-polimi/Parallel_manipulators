@@ -1,0 +1,23 @@
+within StewartPlatform.Components;
+
+model ServoMotor_invDyn "Servo motor model for inverse dynamic"
+    extends StewartPlatform.Icons.ServoMotor_invDyn; // Icon
+
+    // Models
+  Modelica.Mechanics.Rotational.Interfaces.Flange_b flange "Shaft" annotation(Placement(transformation(extent = {{90, -10}, {110, 10}})));
+  StewartPlatform.Interfaces.AxisControlBus axisControlBus annotation(Placement(transformation(extent = {{-70, -10}, {-50, 10}}), iconTransformation(extent = {{-24, 24}, {24, -24}}, rotation = 90, origin = {-58, 4})));
+  
+  Modelica.Mechanics.Rotational.Components.AngleToTorqueAdaptor angleToTorque annotation(Placement(visible = true, transformation(extent = {{-12, -10}, {8, 10}}, rotation = 0)));
+
+equation
+  connect(angleToTorque.phi, axisControlBus.angularPos) annotation(
+    Line(points = {{-4, 8}, {-60, 8}, {-60, 0}, {-60, 0}}, color = {0, 0, 127}));
+  connect(angleToTorque.w, axisControlBus.angularVel) annotation(
+    Line(points = {{-4, 6}, {-58, 6}, {-58, 0}, {-60, 0}}, color = {0, 0, 127}));
+  connect(angleToTorque.a, axisControlBus.angularAcc) annotation(
+    Line(points = {{-4, 2}, {-58, 2}, {-58, 0}, {-60, 0}}, color = {0, 0, 127}));
+  connect(angleToTorque.tau, axisControlBus.appliedTorque) annotation(
+    Line(points = {{-4, -8}, {-60, -8}, {-60, 0}, {-60, 0}}, color = {0, 0, 127}));
+  connect(angleToTorque.flange, flange) annotation(
+    Line(points = {{0, 0}, {98, 0}, {98, 0}, {100, 0}}));
+end ServoMotor_invDyn;

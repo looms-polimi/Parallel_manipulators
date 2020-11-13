@@ -12,3 +12,5 @@ Leg
 ServoMotor
 SixLegs
 ServoMotor_invDyn
+Leg_invDyn
+SixLegs_invDyn

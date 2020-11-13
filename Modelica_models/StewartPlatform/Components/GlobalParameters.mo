@@ -17,18 +17,19 @@ model GlobalParameters "This model includes all parameters that are shared betwe
         parameter DiscParameters base(D=0.74, alpha=from_deg(12)) "Parameters of the base" annotation(Dialog(group="Base and platform"));
         parameter DiscParameters platform(D=0.44, alpha=from_deg(100)) "Parameters of the platform" annotation(Dialog(group="Base and platform"));
 
-        // Initial platform position and orientation
-        parameter SI.Position initPlatformPos[3] = {0,0,1.45} "Coordinates of the platform frame resolved in base frame" annotation(Dialog(tab="Initialization", group="Initial platform position and orientation"));
+        // Base and platform initial position and orientation
+        parameter SI.Position basePos[3] = {0,0,0} "Vector from world frame to base.frame_a resolved in world frame" annotation(Dialog(tab="Initialization"));
+        parameter SI.Position initPlatformPos[3] = {0,0,1.45} "Coordinates of the platform frame resolved in base frame" annotation(Dialog(tab="Initialization"));
         
-        parameter TY.RotationTypes rotationType=TY.RotationTypes.RotationAxis "Type of rotation description" annotation (Dialog(tab="Initialization", group="Initial platform position and orientation"), Evaluate=true);
+        parameter TY.RotationTypes rotationType=TY.RotationTypes.RotationAxis "Type of rotation description" annotation (Dialog(tab="Initialization"));
         
-        parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in platform frame)" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = RotationAxis"));
+        parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in platform frame)" annotation(Dialog(tab="Initialization", group="if rotationType = RotationAxis"));
         parameter NonSI.Angle_deg angle=0 "Angle to rotate base frame around axis n into platform frame" annotation(Dialog(tab="Initialization", group="if rotationType = RotationAxis"));
 
-        parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
-        parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation(Evaluate=true, Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
+        parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation(Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
+        parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation(Dialog(tab="Initialization", group="if rotationType = TwoAxesVectors"));
 
-        parameter TY.RotationSequence sequence = {1,2,3} "Sequence of rotations" annotation (Evaluate=true, Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence"));
+        parameter TY.RotationSequence sequence = {1,2,3} "Sequence of rotations" annotation (Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence"));
         parameter NonSI.Angle_deg angles[3]={0,0,0} "Rotation angles around the axes defined in 'sequence'" annotation (Dialog(tab="Initialization", group="if rotationType = PlanarRotationSequence"));
 
         // Conversion of the orientation in a sequence of rotations
@@ -41,7 +42,6 @@ model GlobalParameters "This model includes all parameters that are shared betwe
                                                 "Fixed rotation object from base frame to platform frame";
 
         final parameter TY.RotationSequence initSequence={1,2,3} "Sequence of rotations to rotate base frame into platform frame; used to initialize the model";
-
         final parameter SI.Angle initAngles[3]=Frames.axesRotationsAngles(R_rel,initSequence) "Initial values of angles to rotate base frame around 'initSequence' axes into platform frame; used to initialize the model";
 
         // (Computation of parameters for the initialization of the legs)
@@ -83,12 +83,12 @@ model GlobalParameters "This model includes all parameters that are shared betwe
 
         // Limits
         parameter SI.Distance maxLength = electricCylinderParameters[1].maxLength "Max legs length (linear actuators have ECparameters.maxLength as max length)" annotation(Dialog(group="Limit parameters for functions and external models"));
-        parameter SI.Distance minLength = electricCylinderParameters[1].minLength "Min legs length (linear actuators have ECparameters.minLength as min length)" annotation(Dialog(group="Limit parameters for functions and external models"));        
-
+        parameter SI.Distance minLength = electricCylinderParameters[1].minLength "Min legs length (linear actuators have ECparameters.minLength as min length)" annotation(Dialog(group="Limit parameters for functions and external models"));    
+ 
     equation
         assert(StewartPlatform.Functions.validPose(base,platform,initPlatformPos,initSequence,initAngles,maxLength,minLength),
                 "GlobalParameters: Initial platform pose outside the operativity region",
-                level = AssertionLevel.warning);
+                level = AssertionLevel.warning);        
 
     annotation (
         defaultComponentName="gp",

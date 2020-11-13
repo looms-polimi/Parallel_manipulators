@@ -14,8 +14,10 @@ IdealLeg
 IdealLinearActuator
 IdealSixLegs
 Interfaces
+invDyn_background
 InverseKinematic
 Junction
+Leg_invDyn
 Leg
 LinearTrajectory
 Path
@@ -29,7 +31,9 @@ ReferenceSignals
 RefToBus
 Scenario
 Scenarios
+ServoMotor_invDyn
 ServoMotor
+SixLegs_invDyn
 SixLegs
 SphericalJoint
 SpindleDrive

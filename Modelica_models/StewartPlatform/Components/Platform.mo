@@ -4,7 +4,7 @@ model Platform "Platform of a Stewart Platform"
   extends StewartPlatform.Icons.Platform; // Icon
   extends Disc(final direction=StewartPlatform.Types.Units.Direction.up, final discParameters = if useGlobalParameters then gp.platform else platform,
       bodyCylinder(
-      final r_0(each fixed=fix_initPlatformPos, start=if useGlobalParameters then gp.initPlatformPos else initPlatformPos),
+      final r_0(each fixed=fix_initPlatformPos, start = if useGlobalParameters then gp.initPlatformPos+gp.basePos else initPlatformPos+basePos),
       final v_0(each fixed=fix_initPlatformVel),
       final a_0(each fixed=fix_initPlatformAcc),
       final angles_fixed=fix_initPlatformOrientation,
@@ -38,6 +38,7 @@ model Platform "Platform of a Stewart Platform"
     parameter Boolean _enforceStates = false "= true, if absolute variables of body object shall be used as states (StateSelect.always)" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean _useQuaternions = false "= true, if quaternions shall be used as potential states otherwise use 3 angles as potential states" annotation (Dialog(group="Initialization"), choices(checkBox=true));
 
+    parameter SI.Position basePos[3] = {0,0,0} "Vector from world frame to base.frame_a resolved in world frame" annotation (Dialog(group="Initialization"));
     parameter SI.Position initPlatformPos[3] = {0,0,1.45} "Coordinates of the platform frame resolved in base frame" annotation (Dialog(group="Initialization"));
     final parameter SI.Velocity initPlatformVel[3] = {0,0,0} "Initial platform velocity";
     final parameter SI.Acceleration initPlatformAcc[3] = {0,0,0} "Initial platform acceleration";
@@ -45,15 +46,15 @@ model Platform "Platform of a Stewart Platform"
     final parameter SI.AngularAcceleration initPlatformAngularAcc[3]={0,0,0} "Initial platform angular acceleration";
     final parameter Modelica.Mechanics.MultiBody.Types.RotationSequence _sequence_angleStates={1,2,3} "Sequence of rotations to rotate world frame into frame_a around the 3 angles used as potential states";
     
-    parameter TY.RotationTypes rotationType=TY.RotationTypes.RotationAxis "Type of rotation description" annotation (Dialog(group="Initialization"), Evaluate = true);
+    parameter TY.RotationTypes rotationType=TY.RotationTypes.RotationAxis "Type of rotation description" annotation (Dialog(group="Initialization"));
     
-    parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in base frame and platform frame)" annotation (Evaluate=true, Dialog(group="if rotationType = RotationAxis"));
+    parameter TY.Axis n={1,0,0} "Axis of rotation in base frame (= same as in base frame and platform frame)" annotation (Dialog(group="if rotationType = RotationAxis"));
     parameter NonSI.Angle_deg angle=0 "Angle to rotate base frame around axis n into platform frame" annotation (Dialog(group="if rotationType = RotationAxis"));
 
-    parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation (Evaluate=true, Dialog(group="if rotationType = TwoAxesVectors"));
-    parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation (Evaluate=true, Dialog(group="if rotationType = TwoAxesVectors"));
+    parameter TY.Axis n_x={1,0,0} "Vector along x-axis of platform frame resolved in base frame" annotation (Dialog(group="if rotationType = TwoAxesVectors"));
+    parameter TY.Axis n_y={0,1,0} "Vector along y-axis of platform frame resolved in base frame" annotation (Dialog(group="if rotationType = TwoAxesVectors"));
 
-    parameter TY.RotationSequence sequence(min={1,1,1},max={3,3,3}) = {1,2,3} "Sequence of rotations" annotation (Evaluate=true,Dialog(group="if rotationType = PlanarRotationSequence"));
+    parameter TY.RotationSequence sequence(min={1,1,1},max={3,3,3}) = {1,2,3} "Sequence of rotations" annotation (Dialog(group="if rotationType = PlanarRotationSequence"));
     parameter NonSI.Angle_deg angles[3]={0,0,0} "Rotation angles around the axes defined in 'sequence'" annotation (Dialog(group="if rotationType = PlanarRotationSequence"));
 
     //Conversion of the orientation in a sequence of rotations

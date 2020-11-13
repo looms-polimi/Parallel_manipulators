@@ -6,7 +6,7 @@ model StewartPlatform_Scenario1
   inner StewartPlatform.Components.GlobalParameters gp annotation(
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(
-    Placement(visible = true, transformation(origin = {-80, -82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    Placement(visible = true, transformation(origin = {-40, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   StewartPlatform.Components.Platform platform annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
   StewartPlatform.Components.Base base annotation(
