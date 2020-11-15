@@ -13,9 +13,6 @@ model Leg_invDyn "Leg model for inverse dynamic"
     // Electric Cylinder
     parameter ElectricCylinderParameters electricCylinderParameters "Parameters of the electric cylinder" annotation (Dialog(group="Electric cylinder"));
 
-    // Servo Motor
-    parameter ServoMotorParameters servoMotorParameters "Parameters of the servo motor" annotation (Dialog(group="Servo motor"));
-
     // Spherical joint
     parameter SphericalJointParameters sphericalJointParameters "Parameters of the spherical joint" annotation (Dialog(group="Spherical joint"));
 

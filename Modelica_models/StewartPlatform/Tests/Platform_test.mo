@@ -1,11 +1,11 @@
 within StewartPlatform.Tests;
 
 model Platform_test
-  StewartPlatform.Components.Platform platform(fixInitOrientation = true, fixInitPosition = true, rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence, useGlobalParameters = false)      annotation(
+  StewartPlatform.Components.Platform platform(fix_initPlatformAngularVel = true, fix_initPlatformOrientation = true, fix_initPlatformPos = true, fix_initPlatformVel = true, platform(D = 2), useGlobalParameters = false) annotation(
     Placement(visible = true, transformation(origin = {0, -6}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner StewartPlatform.Components.GlobalParameters gp(rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence)  annotation(
+  inner StewartPlatform.Components.GlobalParameters gp(rotationType = Modelica.Mechanics.MultiBody.Types.RotationTypes.PlanarRotationSequence) annotation(
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner Modelica.Mechanics.MultiBody.World world(n = {0, 0, -1})  annotation(
+  inner Modelica.Mechanics.MultiBody.World world(n = {0, 0, -1}) annotation(
     Placement(visible = true, transformation(origin = {-78, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass4(m = 1, sphereColor = {255, 0, 0}) annotation(
     Placement(visible = true, transformation(origin = {40, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

@@ -6,8 +6,10 @@ model Controller "Cascade of controllers to control the axes"
 // Parameters
     outer StewartPlatform.Components.GlobalParameters gp;
 
-    parameter StewartPlatform.Types.DiscParameters base = gp.base "Parameters of the platform";
-    parameter StewartPlatform.Types.DiscParameters platform = gp.platform "Parameters of the base";
+    parameter Boolean useGlobalParameters = true "=true, if you want to use the base parameters defined in the 'gp' (GlobalParameters) object" annotation (choices(checkBox=true));
+
+    parameter StewartPlatform.Types.DiscParameters base(D=0.74, alpha=from_deg(12)) "Parameters of the base";
+    parameter StewartPlatform.Types.DiscParameters platform(D=0.44, alpha=from_deg(100)) "Parameters of the platform";
     
     parameter StewartPlatform.Types.Units.Pitch spindlePitch = gp.electricCylinderParameters[1].spindlePitch "Spindle pitch of the electric cylinder for rotation-dispacement conversion";
     parameter Real ratio = gp.electricCylinderParameters[1].ratio "Transmission ratio (servomotor.phi/spindle.phi)";
@@ -36,8 +38,8 @@ model Controller "Cascade of controllers to control the axes"
 // Models
   Interfaces.Pose inputPose "Desired pose for the platform resolved in base frame" annotation (Placement(transformation(extent={{-120,-30},{-60,30}}), iconTransformation(extent={{-120,-30},{-60,30}})));
   ReferenceSignals.InverseKinematic inverseKinematic(
-    platform=platform,
-    base=base,
+    platform = if useGlobalParameters then gp.platform else platform,
+    base = if useGlobalParameters then gp.base else base,
     limitOutputs=limitOutputs,
     stopWhenSaturated=stopWhenSaturated,
     maxLength=maxLength,

@@ -12,3 +12,4 @@ SpindleDrive_test
 ElectricCylinder_test
 Controller_test
 Package_Interfaces_test
+AxisControlBus_signalSelector_test
