@@ -1,0 +1,47 @@
+within StewartPlatform.Scenarios;
+
+model StewartPlatform_InverseDynamic1
+  extends StewartPlatform.Icons.Scenario;
+  // Icon
+  inner StewartPlatform.Components.GlobalParameters gp annotation(
+    Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  inner Modelica.Mechanics.MultiBody.World world annotation(
+    Placement(visible = true, transformation(origin = {-40, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  StewartPlatform.Components.Platform platform(basePos = {1, 0, 0}, useGlobalParameters = false)   annotation(
+    Placement(visible = true, transformation(origin = {-40, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
+  StewartPlatform.Components.Base base(basePos = {1, 0, 0}, useGlobalParameters = false)   annotation(
+    Placement(visible = true, transformation(origin = {-40, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  StewartPlatform.Components.SixLegs sixLegs annotation(
+    Placement(visible = true, transformation(origin = {-40, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  StewartPlatform.Components.Controller controller( limitOutputs = true, useGlobalParameters = true)  annotation(
+    Placement(visible = true, transformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  StewartPlatform.ReferenceSignals.LinearTrajectory linearTrajectory(angles_stop = {20, 20, 20}, rotationType_start = Modelica.Mechanics.MultiBody.Types.RotationTypes.RotationAxis, stopPosition = {0, 0, 1.60}) annotation(
+    Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  StewartPlatform.Components.Platform platform_invDyn annotation(
+    Placement(visible = true, transformation(origin = {40, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
+  StewartPlatform.Components.Base base_invDyn annotation(
+    Placement(visible = true, transformation(origin = {40, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  StewartPlatform.Components.SixLegs_invDyn sixLegs_invDyn annotation(
+    Placement(visible = true, transformation(origin = {40, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  
+equation
+  connect(platform.frame_b, sixLegs.frame_platform) annotation(
+    Line(points = {{-40, 25.2}, {-40, 25.2}, {-40, 19.2}, {-40, 19.2}}, color = {95, 95, 95}, thickness = 0.5));
+  connect(base.frame_b, sixLegs.frame_base) annotation(
+    Line(points = {{-40, -25.2}, {-40, -25.2}, {-40, -19.2}, {-40, -19.2}}, color = {95, 95, 95}, thickness = 0.5));
+  connect(controller.controlBus, sixLegs.controlBus) annotation(
+    Line(points = {{-80, -0.2}, {-60, -0.2}}, color = {255, 204, 51}, thickness = 0.5));
+  
+  connect(linearTrajectory.pose, controller.inputPose) annotation(
+    Line(points = {{-121, 0}, {-101, 0}}, color = {95, 95, 95}, thickness = 0.5));
+  connect(sixLegs_invDyn.frame_platform, platform_invDyn.frame_b) annotation(
+    Line(points = {{40, 20}, {40, 20}, {40, 26}, {40, 26}}, color = {95, 95, 95}, thickness = 0.5));
+  connect(base_invDyn.frame_b, sixLegs_invDyn.frame_base) annotation(
+    Line(points = {{40, -26}, {40, -26}, {40, -20}, {40, -20}}, color = {95, 95, 95}, thickness = 0.5));
+
+ connect(sixLegs.controlBus, sixLegs_invDyn.controlBus) annotation(
+    Line(origin = {-25, -40}, points = {{45, 40}, {25, 40}, {25, -40}, {-45, -40}, {-45, 40}, {-37, 40}}, color = {255, 204, 51}, thickness = 0.5));
+   
+annotation(
+    Diagram);
+end StewartPlatform_InverseDynamic1;

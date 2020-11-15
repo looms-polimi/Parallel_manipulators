@@ -2,3 +2,5 @@ Units
 DiscParameters
 ElectricCylinderParameters
 ServoMotorParameters
+SphericalJointParameters
+UniversalJointParameters

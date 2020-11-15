@@ -13,7 +13,7 @@ model ServoMotor_test
     Placement(visible = true, transformation(extent = {{-40, -10}, {-20, 10}}, rotation = 0)));
   Modelica.Mechanics.Rotational.Sources.TorqueStep torqueStep(offsetTorque = 0, startTime = 45, stepTorque = 5) annotation(
     Placement(visible = true, transformation(extent = {{84, -10}, {64, 10}}, rotation = 0)));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.1, phi(fixed = true), w(fixed = true, start = 0)) annotation(
+  Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.1, phi(fixed = true), w(fixed = true)) annotation(
     Placement(visible = true, transformation(extent = {{20, -10}, {40, 10}}, rotation = 0)));
 equation
   connect(add.y, refToBus.torqueRef) annotation(

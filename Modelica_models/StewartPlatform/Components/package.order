@@ -3,13 +3,14 @@ GlobalParameters
 Base
 Platform
 UniversalJoint
+SphericalJoint
 PartialElectricCylinder
-IdealLinearActuator
-IdealLeg
-IdealSixLegs
 SpindleDrive
 ElectricCylinder
 Controller
 Leg
 ServoMotor
 SixLegs
+ServoMotor_invDyn
+Leg_invDyn
+SixLegs_invDyn

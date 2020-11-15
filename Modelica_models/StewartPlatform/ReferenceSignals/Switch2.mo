@@ -28,6 +28,6 @@ equation
   deMux[count].positionOut=mux.positionIn;
   deMux[count].orientationOut=mux.orientationIn;
 
-  connect(deMux.pose, poseInput) annotation (Line(points={{-55,0},{-90,0}}, color={0,0,0}));
-  connect(poseOutput, mux.pose) annotation (Line(points={{90,0},{59,0}}, color={0,0,0}));
+  connect(deMux.poseIn, poseInput) annotation (Line(points={{-55,0},{-90,0}}, color={0,0,0}));
+  connect(poseOutput, mux.poseOut) annotation (Line(points={{90,0},{59,0}}, color={0,0,0}));
 end Switch2;

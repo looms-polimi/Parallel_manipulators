@@ -1,11 +1,11 @@
 within StewartPlatform.Tests;
 
 model Base_test
-  inner StewartPlatform.Components.GlobalParameters gp(base(D = 2, alpha = pi / 4))  annotation(
+  inner StewartPlatform.Components.GlobalParameters gp(base(D = 0.5), basePos = {1, 1, 0})   annotation(
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world(n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {-78, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  StewartPlatform.Components.Base base(base(D = 0.1), useGlobalParameters = false)  annotation(
+  StewartPlatform.Components.Base base(base(D = 2), basePos = {0, 0, 1}, useGlobalParameters = false)   annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass3(m = 1, sphereColor = {255, 0, 0}) annotation(
     Placement(visible = true, transformation(origin = {-40, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

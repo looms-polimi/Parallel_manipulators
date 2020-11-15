@@ -3,3 +3,4 @@ ArmParameters
 DiscParameters
 ReducerParameters
 ServoMotorParameters
+SphericalJointParameters

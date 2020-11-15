@@ -51,35 +51,14 @@ equation
   assert(0<=discParameters.mass,
   "Disc: the mass of the disc MUST be bigger or equal to zero");
 
-  connect(fixedRotation1.frame_a, bodyCylinder.frame_a) annotation (Line(
-      points={{0,-40},{0,0},{-20,0}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(fixedRotation2.frame_a, bodyCylinder.frame_a) annotation (Line(
-      points={{40,40},{0,40},{0,0},{-20,0}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(fixedRotation3.frame_a, bodyCylinder.frame_a) annotation (Line(
-      points={{-40,40},{0,40},{0,0},{-20,0}},
-      color={95,95,95},
-      thickness=0.5));
+  connect(fixedRotation1.frame_a, bodyCylinder.frame_a) annotation (Line(points={{0,-40},{0,0},{-20,0}},color={95,95,95},thickness=0.5));
+  connect(fixedRotation2.frame_a, bodyCylinder.frame_a) annotation (Line(points={{40,40},{0,40},{0,0},{-20,0}},color={95,95,95},thickness=0.5));
+  connect(fixedRotation3.frame_a, bodyCylinder.frame_a) annotation (Line(points={{-40,40},{0,40},{0,0},{-20,0}},color={95,95,95},thickness=0.5));
 
-  connect(fixedRotation1.frame_b, frame_b[1]) annotation (Line(
-      points={{0,-60},{20,-60},{20,89.3333},{0,89.3333}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(fixedRotation2.frame_b, frame_b[2]) annotation (Line(
-      points={{60,40},{60,100},{0,100}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(fixedRotation3.frame_b, frame_b[3]) annotation (Line(
-      points={{-60,40},{-60,110.667},{0,110.667}},
-      color={95,95,95},
-      thickness=0.5));
+  connect(fixedRotation1.frame_b, frame_b[1]) annotation (Line(points={{0,-60},{20,-60},{20,89.3333},{0,89.3333}},color={95,95,95},thickness=0.5));
+  connect(fixedRotation2.frame_b, frame_b[2]) annotation (Line(points={{60,40},{60,100},{0,100}},color={95,95,95},thickness=0.5));
+  connect(fixedRotation3.frame_b, frame_b[3]) annotation (Line(points={{-60,40},{-60,110.667},{0,110.667}},color={95,95,95},thickness=0.5));
       
-  connect(frame_a, bodyCylinder.frame_a) annotation (Line(
-      points={{0,-100},{-20,-100},{-20,0}},
-      color={95,95,95},
-      thickness=0.5));
+  connect(frame_a, bodyCylinder.frame_a) annotation (Line(points={{0,-100},{-20,-100},{-20,0}},color={95,95,95},thickness=0.5));
 
 end Disc;

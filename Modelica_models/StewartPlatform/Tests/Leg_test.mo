@@ -1,9 +1,9 @@
 within StewartPlatform.Tests;
 
 model Leg_test
-  StewartPlatform.Components.Leg leg(ec_initialLengthFixed = true, ec_initialVelFixed = true, sj_enforceStates = true, uj_initialAnglesFixed = true, uj_initialAngularVelFixed = true)  annotation(
+  StewartPlatform.Components.Leg leg(electricCylinderParameters.initialLengthFixed = true, electricCylinderParameters.initialVelFixed = true, sphericalJointParameters.enforceStates = true, universalJointParameters.initialAnglesFixed = true, universalJointParameters.initialAngularVelFixed = true)  annotation(
     Placement(visible = true, transformation(origin = {2, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Sine sine(amplitude = 0.1, f = 0.1, offset = leg.ec_initialLength, startTime = 1) annotation(
+  Modelica.Blocks.Sources.Sine sine(amplitude = 0.1, f = 0.1, offset = leg.electricCylinderParameters.initialLength, startTime = 1) annotation(
     Placement(visible = true, transformation(origin = {-168, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world(g = 0, n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {-44, -18}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -13,7 +13,7 @@ model Leg_test
     Placement(visible = true, transformation(origin = {-38, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Feedback feedback annotation(
     Placement(visible = true, transformation(origin = {-132, 44}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Math.Gain gain(k = 1 / leg.electricCylinder.ECparameters.ratio)  annotation(
+  Modelica.Blocks.Math.Gain gain(k = 1 / leg.electricCylinder.electricCylinderParameters.ratio)  annotation(
     Placement(visible = true, transformation(origin = {-70, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Gain gain1(k = 1 / leg.electricCylinder.spindleDrive.ratio) annotation(
     Placement(visible = true, transformation(origin = {-106, 10}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
@@ -28,7 +28,7 @@ equation
     Line(points = {{-157, 44}, {-141, 44}, {-141, 44}, {-141, 44}}, color = {0, 0, 127}));
   connect(refToBus.axisControlBus, leg.axisControlBus) annotation(
     Line(points = {{-28, 44}, {-8, 44}, {-8, -11.5}}, color = {255, 204, 51}, thickness = 0.5));
-  connect(gain.u, leg.axisControlBus.encoder) annotation(
+  connect(gain.u, leg.axisControlBus.angularPos) annotation(
     Line(points = {{-58, 10}, {-8, 10}, {-8, -12}, {-8, -12}}, color = {0, 0, 127}));
   connect(gain1.u, gain.y) annotation(
     Line(points = {{-94, 10}, {-82, 10}, {-82, 10}, {-80, 10}}, color = {0, 0, 127}));

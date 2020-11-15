@@ -1,7 +1,7 @@
 within DeltaRobot.Tests;
 
 model ServoMotor_test "Test of model 'ServoMotor'"
-  DeltaRobot.Components.ServoMotor servoMotor(sm_initType = Modelica.Blocks.Types.Init.InitialOutput)  annotation(
+  DeltaRobot.Components.ServoMotor servoMotor  annotation(
     Placement(visible = true, transformation(origin = {-10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   DeltaRobot.Interfaces.RefToBus refToBus annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
