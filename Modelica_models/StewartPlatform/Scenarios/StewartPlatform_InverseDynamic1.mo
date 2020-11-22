@@ -42,6 +42,5 @@ equation
  connect(sixLegs.controlBus, sixLegs_invDyn.controlBus) annotation(
     Line(origin = {-25, -40}, points = {{45, 40}, {25, 40}, {25, -40}, {-45, -40}, {-45, 40}, {-37, 40}}, color = {255, 204, 51}, thickness = 0.5));
    
-annotation(
-    Diagram);
+annotation(__OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --maxSizeLinearTearing=400");
 end StewartPlatform_InverseDynamic1;

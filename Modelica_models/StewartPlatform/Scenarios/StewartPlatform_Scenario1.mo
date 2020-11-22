@@ -28,4 +28,6 @@ equation
   connect(linearTrajectory.pose, controller.inputPose) annotation(
     Line(origin = {-30, 0}, points = {{-10, 0}, {10, 0}}, color = {95, 95, 95}, thickness = 0.5));
     
+annotation(__OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --maxSizeLinearTearing=400");
+
 end StewartPlatform_Scenario1;
