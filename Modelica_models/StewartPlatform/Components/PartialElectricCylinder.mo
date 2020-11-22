@@ -43,11 +43,6 @@ partial model PartialElectricCylinder "Partial model of an electric cylinder"
 
 equation
   assert(abs(stroke)<=electricCylinderParameters.workingStroke/2, "PartialElectricCylinder: The current stroke is over the working stroke.", level = AssertionLevel.warning);
-  assert(abs(feedForce)<=electricCylinderParameters.maxForce, "PartialElectricCylinder: The feed force exceeds the maximum value.", level = AssertionLevel.warning);
-  assert(abs(velocity)<=electricCylinderParameters.maxSpeed, "PartialElectricCylinder: The velocity exceeds the maximum value.", level = AssertionLevel.warning);
-  assert(abs(acceleration)<=electricCylinderParameters.maxAcceleration, "PartialElectricCylinder: The acceleration exceeds the maximum value.", level = AssertionLevel.warning);
-  assert(abs(rotationalSpeed)<=electricCylinderParameters.maxRotationalSpeed, "PartialElectricCylinder: The rotational speed exceeds the maximum value.", level = AssertionLevel.warning);
-
   assert(electricCylinderParameters.minLength<electricCylinderParameters.maxLength,"PartialElectricCylinder: Limits must be consistent; however minLength>=maxLength");
   assert(electricCylinderParameters.initialLength<=electricCylinderParameters.maxLength and electricCylinderParameters.initialLength>=electricCylinderParameters.minLength, "PartialElectricCylinder: Initial length is not within [minLength, maxLength]",level = AssertionLevel.warning);
 

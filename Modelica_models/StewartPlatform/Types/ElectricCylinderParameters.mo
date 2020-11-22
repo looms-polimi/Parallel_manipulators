@@ -28,12 +28,7 @@ record ElectricCylinderParameters "Parameters of an electric cylinder with spind
         "Length of the cylinder that represents the piston (animation)" annotation (Dialog(group="Geometry"));
     parameter SI.Diameter pistonDiameter(displayUnit = "mm", max=boxWidth) = 0.024 "Piston diameter (animation)" annotation (Dialog(group="Geometry"));
 
-    // Limits
-    parameter SI.Force maxForce(min=0) = 3000 "Max feed force" annotation (Dialog(group="Limits"));
-    parameter SI.Velocity maxSpeed(min=0) = 0.4 "Max speed" annotation (Dialog(group="Limits"));
-    parameter SI.Acceleration maxAcceleration(min=0) = 5 "Max acceleration" annotation (Dialog(group="Limits"));
-    parameter NonSI.AngularVelocity_rpm maxRotationalSpeed(min=0) = 4800 "Max rotational speed" annotation (Dialog(group="Limits"));
-
+    // (others)    
     final parameter SI.Distance minLength = boxLength+minPistonLength "Min value for variable 'length'";
     final parameter SI.Distance maxLength = minLength+workingStroke "Max value for variable 'length'";
     final parameter SI.Length minStroke(max=0) = -workingStroke/2 "Min value for variable 'stroke'";

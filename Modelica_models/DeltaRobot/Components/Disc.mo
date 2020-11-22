@@ -34,22 +34,9 @@ public
     annotation (Placement(transformation(extent={{-20,-10},{-40,10}})));
 
 equation
-
   assert(discParameters.D<=discParameters.De,
   "Disc: the disc external diameter should be bigger or equal to the diameter of the circumference where the joints are located",
   level = AssertionLevel.warning);
-
-  assert(0<discParameters.De,
-  "Disc: the disc external diameter MUST be bigger then zero");
-
-  assert(0<discParameters.D,
-  "Disc: the diameter of the circumference where the joints are located MUST be bigger then zero");
-
-  assert(0<discParameters.thickness,
-  "Disc: the thickness of the disc MUST be bigger then zero");
-
-  assert(0<=discParameters.mass,
-  "Disc: the mass of the disc MUST be bigger or equal to zero");
 
   connect(fixedRotation1.frame_a, bodyCylinder.frame_a) annotation (Line(points={{0,-40},{0,0},{-20,0}},color={95,95,95},thickness=0.5));
   connect(fixedRotation2.frame_a, bodyCylinder.frame_a) annotation (Line(points={{40,40},{0,40},{0,0},{-20,0}},color={95,95,95},thickness=0.5));

@@ -37,21 +37,6 @@ model Disc "Cylindrical disc used to model the base and the platform"
         assert(discParameters.D<=discParameters.De,
         "Disc: the disc external diameter 'De' should be bigger or equal to the 'D' diameter of the circumference where the joints are located.",
         level = AssertionLevel.warning);
-
-        assert(0<discParameters.De,
-        "Disc: the disc external diameter 'De' MUST be bigger then zero.");
-
-        assert(0<discParameters.D,
-        "Disc: the diameter 'D' of the circumference where the joints are located MUST be bigger then zero.");
-
-        assert(0<discParameters.thickness,
-        "Disc: the thickness of the disc MUST be bigger then zero.");
-
-        assert(0<=discParameters.mass,
-        "Disc: the mass of the disc MUST be bigger or equal to zero.");
-
-        assert(0<=discParameters.alpha,
-        "Disc: the angle 'alpha' between two joints MUST be bigger or equal to zero.");
         
     connect(fixedRotation1.frame_a, bodyCylinder.frame_a) annotation(Line(points = {{20, 20}, {20, 20}, {20, 0}, {-20, 0}, {-20, 0}}));
     connect(fixedRotation2.frame_a, bodyCylinder.frame_a) annotation(Line(points = {{0, 40}, {0, 40}, {0, 0}, {-20, 0}, {-20, 0}}));
