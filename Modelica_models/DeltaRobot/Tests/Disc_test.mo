@@ -3,7 +3,7 @@ within DeltaRobot.Tests;
 model Disc_test "Test of model 'Disc'"
   inner Modelica.Mechanics.MultiBody.World world(defaultBodyDiameter = 0.02, n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {0, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
-  DeltaRobot.Components.Disc disc(direction = DeltaRobot.Types.Units.Direction.up, discParameters(D = 0.5, beta = from_deg(10)))  annotation(
+  DeltaRobot.Components.Disc disc(direction = DeltaRobot.Types.Units.Direction.up, discParameters(D = 0.5, beta = from_deg(0)))  annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass1(m = 1)  annotation(
     Placement(visible = true, transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

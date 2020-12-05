@@ -18,6 +18,9 @@ model Platform "Platform of a Delta Robot"
       final useQuaternions=_useQuaternions,
       final sequence_angleStates=_sequence_angleStates));
 
+    // Imports
+    import TY = Modelica.Mechanics.MultiBody.Types;
+
     // Parameters
     outer DeltaRobot.Components.GlobalParameters gp;
 
@@ -25,10 +28,10 @@ model Platform "Platform of a Delta Robot"
     parameter DeltaRobot.Types.DiscParameters platform(D=0.07) "Platform parameters";    
 
     // Initialization
-    parameter Boolean fix_initPlatformPos = true "=true, if you want to use the platform initial position as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
+    parameter Boolean fix_initPlatformPos = false "=true, if you want to use the platform initial position as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean fix_initPlatformVel = false "=true, if you want to use the platform initial velocity as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean fix_initPlatformAcc = false "=true, if you want to use the platform initial acceleration as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
-    parameter Boolean fix_initPlatformOrientation = true "=true, if you want to use the platform initial orientation as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
+    parameter Boolean fix_initPlatformOrientation = false "=true, if you want to use the platform initial orientation as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean fix_initPlatformAngularVel = false "=true, if you want to use the platform initial angular velocity as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean fix_initPlatformAngularAcc = false "=true, if you want to use the platform initial angular acceleration as initial equation" annotation (Dialog(group="Initialization"), choices(checkBox=true));
     parameter Boolean _enforceStates = false "= true, if absolute variables of body object shall be used as states (StateSelect.always)" annotation (Dialog(group="Initialization"), choices(checkBox=true));
@@ -42,7 +45,8 @@ model Platform "Platform of a Delta Robot"
     final parameter SI.AngularAcceleration initPlatformAngularAcc[3]={0,0,0} "Initial platform angular acceleration";
     final parameter Modelica.Mechanics.MultiBody.Types.RotationSequence _sequence_angleStates={1,2,3} "Sequence of rotations to rotate world frame into frame_a around the 3 angles used as potential states";
 
-    final parameter Modelica.Mechanics.MultiBody.Types.RotationSequence initSequence={1,2,3} "Sequence of rotations to rotate base frame into platform frame at initial time. Used to initialize bodyCylinder";
-    final parameter SI.Angle initAngles[3]={0,0,0} "Initial values of angles to rotate base frame around 'initSequence' axes into platform frame. Used to initialize bodyCylinder"; //Platform and base are always parallel
+    // (the orientation of the platform is parallel to the base and it is fixed)
+    final parameter TY.RotationSequence initSequence=if useGlobalParameters then gp.initSequence else {1,2,3} "Sequence of rotations to rotate base frame into platform frame; used to initialize the model";
+    final parameter SI.Angle initAngles[3]=if useGlobalParameters then gp.initAngles else {0,0,0} "Initial values of angles to rotate base frame around 'initSequence' axes into platform frame; used to initialize the model";
 
 end Platform;

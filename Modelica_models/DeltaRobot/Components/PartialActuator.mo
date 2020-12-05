@@ -3,21 +3,8 @@ within DeltaRobot.Components;
 partial model PartialActuator "Partial model of a rotary actuator"
 
     // Parameters
-    // GearReducer
-    parameter DeltaRobot.Types.ReducerParameters reducerParameters "Parameters of the gearbox reducer" annotation (Dialog(group="Gearbox reducer"));
-
-    // Initialization
-    parameter SI.Angle initAngle = 0 "Initial angle" annotation(Dialog(group="Initialization"));
-    parameter SI.AngularVelocity initAngularVel = 0 "Initial angular velocity" annotation(Dialog(group="Initialization"));
-    parameter SI.AngularAcceleration initAngularAcc = 0 "Initial angular acceleration" annotation(Dialog(group="Initialization"));
-    parameter Boolean initAngleFixed = false "=true, if you want to use the joint initial angle as initial equation" annotation(Dialog(group="Initialization"));
-    parameter Boolean initAngularVelFixed = false "=true, if you want to use the joint initial angular velocity as initial equation" annotation(Dialog(group="Initialization"));
-    parameter Boolean initAngularAccFixed = false "=true, if you want to use the joint initial angular acceleration as initial equation" annotation(Dialog(group="Initialization"));
-    parameter StateSelect stateSelect = StateSelect.prefer "Priority to use actuator angle phi and w=der(phi) as states" annotation(Dialog(group="Initialization"));
-
-    // Animation
-    parameter SI.Distance actCylinderLength = 1/30 "Length of cylinder representing the actuator revolute joint" annotation(Dialog(group="Animation"));
-    parameter SI.Diameter actCylinderDiameter = 1/30 "Diameter of cylinder representing the actuator revolute joint" annotation(Dialog(group="Animation"));
+    parameter DeltaRobot.Types.ReducerParameters reducerParameters "Parameters of the gearbox reducer";
+    parameter DeltaRobot.Types.ActuatorParameters actuatorParameters "Parameters of the rotary actuator";  
 
     // Variables (useful to plot results of simulations)
     SI.Angle theta "Rotation angle around z-axis from frame_a to frame_b";
@@ -34,13 +21,13 @@ partial model PartialActuator "Partial model of a rotary actuator"
     Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation (Placement(transformation(extent={{84,-16},{116,16}})));
     
     Modelica.Mechanics.MultiBody.Joints.Revolute revolute(
-        phi(fixed= initAngleFixed, start=initAngle),
-        w(fixed = initAngularVelFixed, start = initAngularVel),
-        a(fixed = initAngularAccFixed, start = initAngularAcc),
-        cylinderDiameter=actCylinderDiameter,
-        cylinderLength=actCylinderLength,        
-        stateSelect=stateSelect,
-        useAxisFlange=true)
+        phi(fixed = actuatorParameters.initialAngleFixed, start = actuatorParameters.initialAngle),
+        w(fixed = actuatorParameters.initialAngularVelFixed, start = actuatorParameters.initialAngularVel),
+        a(fixed = actuatorParameters.initialAngularAccFixed, start = actuatorParameters.initialAngularAcc),
+        cylinderDiameter = actuatorParameters.cylinderDiameter,
+        cylinderLength = actuatorParameters.cylinderLength,        
+        stateSelect = actuatorParameters.stateSelect,
+        useAxisFlange = true)
         annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
 
     GearReducer gearReducer(reducerParameters=reducerParameters) annotation (Placement(transformation(extent={{-22,26},{-2,46}})));

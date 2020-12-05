@@ -9,11 +9,11 @@ model Base "Base of a Stewart Platform"
 
     parameter Boolean useGlobalParameters = true "=true, if you want to use the base parameters defined in the 'gp' (GlobalParameters) object" annotation (choices(checkBox=true));
     parameter StewartPlatform.Types.DiscParameters base(D=0.74, alpha=from_deg(12)) "Parameters of the base";
-    parameter SI.Position basePos[3] = if useGlobalParameters then gp.basePos else {0,0,0} "Vector from world frame to base.frame_a resolved in world frame";
+    parameter SI.Position basePos[3] = {0,0,0} "Vector from world frame to base.frame_a resolved in world frame";
   
 // Models
     Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation=false) annotation (Placement(transformation(extent={{-10,-11},{10,11}},rotation=90,origin={-80,-9})));        
-    Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation(animation=false, r=basePos) annotation (Placement(transformation(extent={{-52,8},{-32,28}})));
+    Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation(animation=false, r=if useGlobalParameters then gp.basePos else basePos) annotation (Placement(transformation(extent={{-52,8},{-32,28}})));
 
 equation
   connect(fixed.frame_b, fixedRotation.frame_a) annotation(Line(points = {{-80, 2}, {-80, 2}, {-80, 18}, {-52, 18}, {-52, 18}}));

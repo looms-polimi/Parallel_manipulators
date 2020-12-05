@@ -5,13 +5,13 @@ model test1
     Placement(visible = true, transformation(origin = {-80, 80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   DeltaRobot.Components.Base base annotation(
     Placement(visible = true, transformation(origin = {1.77636e-15, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
-  DeltaRobot.Components.Platform platform(fixInitAngularVel = true, fixInitOrientation = true, fixInitPosition = true, fixInitVelocity = true, useGlobalParameters = true)  annotation(
+  DeltaRobot.Components.Platform platform(fixInitAngularVel = true, fixInitOrientation = true, fixInitPosition = true, fixInitVelocity = true, fix_initPlatformAngularVel = true, fix_initPlatformOrientation = true, fix_initPlatformPos = true, fix_initPlatformVel = true, useGlobalParameters = true)  annotation(
     Placement(visible = true, transformation(origin = {0, -70}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   DeltaRobot.Components.ThreeArms_P1_IdealActPos threeArms_P1_IdealActPos(useGlobalParameters = true)  annotation(
     Placement(visible = true, transformation(origin = {0, -20}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(
     Placement(visible = true, transformation(origin = {-80, -82}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Constant const[3](k = {0.207708, 0.207708, 0.207708})  annotation(
+  Modelica.Blocks.Sources.Constant const[3](k = {-0.207708, -0.207708, -0.207708})  annotation(
     Placement(visible = true, transformation(origin = {-90, -20}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(const.y, threeArms_P1_IdealActPos.angleRef) annotation(

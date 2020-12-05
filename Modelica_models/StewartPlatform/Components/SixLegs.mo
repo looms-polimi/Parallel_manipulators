@@ -23,7 +23,7 @@ model SixLegs "Set of six legs of a Stewart Platform appropiately connected, com
     parameter SphericalJointParameters sphericalJointParameters[6] = gp.sphericalJointParameters "Parameters of the spherical joints" annotation (Dialog(group="Spherical joints"));
 
 // Models
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_base[6] "Frames for connection with the platform's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,-100})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_base[6] "Frames for connection with the base's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,-100})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_platform[6] "Frames for connection with the platform's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,100})));
   Interfaces.ControlBus controlBus annotation (Placement(transformation(extent={{-10,10},{10,-10}},rotation=90,origin={-100,2}), iconTransformation(extent={{-16,16},{16,-16}},rotation=90,origin={-102,0})));
   

@@ -1,7 +1,7 @@
 within DeltaRobot.Tests;
 
 model IdealActuatorVel_test "Test of model 'IdealActuatorVel'"
-  Components.IdealActuatorVel idealActuatorVel(initAngle = 0.7853981633974483,initAngleFixed = true, initAngularVelFixed = true)  annotation(
+  Components.IdealActuatorVel idealActuatorVel  annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

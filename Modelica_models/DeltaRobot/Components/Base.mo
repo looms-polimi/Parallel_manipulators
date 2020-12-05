@@ -12,9 +12,10 @@ model Base "Base of a Delta Robot"
     parameter SI.Position basePos[3] = {0,0,0} "Vector from world frame to base.frame_a resolved in world frame";
 
     // Models
-    Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation=false) annotation (Placement(transformation(extent={{-10,-11},{10,11}},rotation=90,origin={56,-9})));
-    //Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation(animation=false, r = if useGlobalParameters then gp.basePos else basePos) annotation (Placement(transformation(extent={{-52,8},{-32,28}})));
-  //TODO aggiungere una fix rotation al modello della baser per uniformarlo al modello della piattaforma di Stewart
+    Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation=false) annotation (Placement(visible = true, transformation(origin = {-92, -11}, extent = {{-10, -11}, {10, 11}}, rotation = 90)));
+    Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation(animation=false, r = if useGlobalParameters then gp.basePos else basePos) annotation (Placement(visible = true, transformation(extent = {{-80, 0}, {-60, 20}}, rotation = 0)));
 equation
-  connect(bodyCylinder.frame_a, fixed.frame_b) annotation (Line(points={{-20,0},{18,0},{18,1},{56,1}},color={95,95,95},thickness=0.5));
+  connect(fixedRotation.frame_a, fixed.frame_b) annotation(Line(points = {{-80, 10}, {-90, 10}, {-90, 0}, {-90, 0}}));
+  connect(fixedRotation.frame_b, bodyCylinder.frame_a) annotation(Line(points = {{-60, 10}, {-20, 10}, {-20, 0}, {-20, 0}}));
+
 end Base;

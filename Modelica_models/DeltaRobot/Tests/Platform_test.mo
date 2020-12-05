@@ -3,7 +3,7 @@ within DeltaRobot.Tests;
 model Platform_test "Test of model 'Platform'"
   inner Modelica.Mechanics.MultiBody.World world(defaultBodyDiameter = 0.01, n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  DeltaRobot.Components.Platform platform(fixInitOrientation = true, fixInitPosition = true, useGlobalParameters = true)  annotation(
+  DeltaRobot.Components.Platform platform(fix_initPlatformAngularVel = true,fix_initPlatformOrientation = true, fix_initPlatformPos = true, fix_initPlatformVel = true, initPlatformPos = {1, 1, 1}, useGlobalParameters = false)   annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass1(m = 1)  annotation(
     Placement(visible = true, transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -11,7 +11,7 @@ model Platform_test "Test of model 'Platform'"
     Placement(visible = true, transformation(origin = {0, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass3(m = 1)  annotation(
     Placement(visible = true, transformation(origin = {30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  inner DeltaRobot.Components.GlobalParameters gp(fixInitAngularVel = true,fixInitOrientation = true, fixInitPosition = true, fixInitVelocity = true, platform(D = 0.5, beta = 0))   annotation(
+  inner DeltaRobot.Components.GlobalParameters gp(platform(D = 0.5, beta = from_deg(90)))   annotation(
     Placement(visible = true, transformation(origin = {-80, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Visualizers.FixedFrame frameJoint1(color_x = {255, 0, 0}, length = 0.2)  annotation(
     Placement(visible = true, transformation(origin = {-60, 30}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));

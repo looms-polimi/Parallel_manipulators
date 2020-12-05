@@ -1,7 +1,7 @@
 within DeltaRobot.Icons;
 
 model IdealActuatorPos "Icon for 'IdealActuatorPos' model"
-  extends DeltaRobot.Icons.IdealActuator;
+  extends IdealActuator;
 equation
   annotation (Icon(graphics={
         Text(

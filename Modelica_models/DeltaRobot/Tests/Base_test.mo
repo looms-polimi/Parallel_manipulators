@@ -3,7 +3,7 @@ within DeltaRobot.Tests;
 model Base_test "Test of model 'Base'"
   inner Modelica.Mechanics.MultiBody.World world(defaultBodyDiameter = 0.02, n = {0, 0, -1})  annotation(
     Placement(visible = true, transformation(origin = {-70, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  DeltaRobot.Components.Base base(base(beta = pi), useGlobalParameters = true)  annotation(
+  DeltaRobot.Components.Base base(useGlobalParameters = false)   annotation(
     Placement(visible = true, transformation(origin = {0, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass1(m = 1)  annotation(
     Placement(visible = true, transformation(origin = {-30, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));

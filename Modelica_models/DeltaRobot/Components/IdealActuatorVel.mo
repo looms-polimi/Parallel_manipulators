@@ -21,7 +21,7 @@ model IdealActuatorVel "Model of a rotary actuator with controllable angular vel
         y(fixed = y_startFixed), 
         y_start = y_start) 
         annotation (Placement(transformation(extent={{-82,26},{-62,46}})));
-    Modelica.Mechanics.Rotational.Sources.Speed speed(phi(fixed=false)) annotation (Placement(transformation(extent={{-52,26},{-32,46}})));
+    Modelica.Mechanics.Rotational.Sources.Speed speed annotation (Placement(transformation(extent={{-52,26},{-32,46}})));
 
 equation
     connect(firstOrder.y, speed.w_ref) annotation (Line(points={{-61,36},{-54,36}}, color={0,0,127}));
