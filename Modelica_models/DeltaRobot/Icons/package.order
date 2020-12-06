@@ -36,6 +36,8 @@ ServoMotor
 SphericalJoint
 Switch2
 Tests
+ThreeArms_IdealActPos
+ThreeArms_IdealActVel
 ThreeArms
 TrapezoidalTrajectory
 Types

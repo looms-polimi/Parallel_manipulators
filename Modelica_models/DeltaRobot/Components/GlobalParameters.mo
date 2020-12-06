@@ -32,9 +32,9 @@ model GlobalParameters "This model includes all parameters that are shared betwe
     // Actuators
       parameter ActuatorParameters actuatorParameters[3] =
       {
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = true, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[1]),
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = true, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[2]),
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = true, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[3])
+        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[1]),
+        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[2]),
+        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[3])
       } "Parameters of the rotary actuators" annotation (Dialog(group="Actuators"));
 
     // Reducers

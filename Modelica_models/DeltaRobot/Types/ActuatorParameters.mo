@@ -13,14 +13,13 @@ record ActuatorParameters "Parameters of a rotatry actuator"
     parameter Boolean initialAngularVelFixed = false "=true, if you want to use the joint initial angular velocity (=0) as initial equation ('fixed' attributes)" annotation(Dialog(group="Initialization"));
     parameter Boolean initialAngularAccFixed = false "=true, if you want to use the joint initial angular acceleration (=0) as initial equation ('fixed' attributes)" annotation(Dialog(group="Initialization"));
 
-
-    // IdealActuatorPos
-    // First order filter
-    parameter Real Tf = 0.02 "Time constant of the first order filter applied to the input reference angle" annotation (Dialog(group="First order filter"));
+    // First order filter (IdealActuatorPos and IdealActuatorVel)
+    parameter Real Tf = 0.02 "Time constant of the first order filter applied to the input reference signal" annotation (Dialog(group="First order filter"));
     parameter Modelica.Blocks.Types.Init initType = Modelica.Blocks.Types.Init.NoInit "Type of initialization of first order filter (1: no init, 2: steady state, 3/4: initial output)" annotation(Dialog(group="First order filter"));
     parameter Real y_start = 0 "Initial or guess value of first order filter output (= state)" annotation (Dialog(group="First order filter"));
     parameter Boolean y_startFixed = false "=true, if you want to use the filter initial output as initial equation" annotation (Dialog(group="First order filter"));
-    // Limits
+    
+    // Limits (only IdealActuatorPos)
     parameter Boolean enableLimiter = true "=true, if you want to limit the input reference angle within interval [minTheta, maxTheta]" annotation(Dialog(group="Limits"));
     parameter SI.Angle maxTheta = from_deg(85) "Max actuator angle" annotation(Dialog(group="Limits"));
     parameter SI.Angle minTheta = from_deg(-85) "Min actuator angle" annotation(Dialog(group="Limits"));
