@@ -33,12 +33,14 @@ RefToBus
 Scenario
 Scenarios
 ServoMotor
+SpeedCommand
 SphericalJoint
 Switch2
 Tests
 ThreeArms_IdealActPos
 ThreeArms_IdealActVel
 ThreeArms
+TorqueCommand
 TrapezoidalTrajectory
 Types
 Units
