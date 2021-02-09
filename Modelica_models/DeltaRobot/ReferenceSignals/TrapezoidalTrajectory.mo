@@ -1,9 +1,8 @@
-within StewartPlatform.ReferenceSignals;
+within DeltaRobot.ReferenceSignals;
 
-model TrapezoidalTrajectory "The outputs are the position and orientation of the platform to follow a line with a trapezoidal velocity profile (constant orientation)"
-  extends StewartPlatform.Icons.TrapezoidalTrajectory; // Icon
-  extends PartialTrajectoryModel(final transitionTime=Ti+Tc+Tf,
-  final rotationType_stop, final n_stop, final angle_stop, final n_x_stop, final n_y_stop, final sequence_stop,final angles_stop);
+model TrapezoidalTrajectory "The outputs are three reference values for the three actuators of a Delta robot to follow a line with a trapezoidal velocity profile"
+  extends DeltaRobot.Icons.TrapezoidalTrajectory; // Icon
+  extends PartialTrajectoryModel(final transitionTime=Ti+Tc+Tf);
 
   //Imports
     import Modelica.Math.Vectors.*;
@@ -31,9 +30,8 @@ protected
                             2
                            else
                             0;
-
 public
-    final parameter Real temp = if case==1 then 1 else sqrt(0.5*initialSpeed^2+0.5*finalSpeed^2+ai*totalDistance); // Temporary variable to avoid an error in OpenModelica
+    final parameter Real temp = if case==1 then 1 else sqrt(0.5*initialSpeed*initialSpeed+0.5*finalSpeed*finalSpeed+ai*totalDistance); // Temporary variable to avoid an error in OpenModelica
     final parameter SI.Time Ti= if case==1 then Ti_bar else -initialSpeed/ai+temp/ai
       "Initial acceletation time";
     final parameter SI.Time Tf= if case==1 then Tf_bar else (finalSpeed-initialSpeed-ai*Ti)/af
@@ -48,8 +46,6 @@ public
 equation
   assert(maxSpeed>0 and maxAcceleration>0,"TrapezoidalTrajectory: Invalid max speed or max acceleration.");
   assert(case<>0,"TrapezoidalTrajectory: Invalid parameters. Impossible trapezoidal trajectory.");
-
-  angles=startAngles;
 
   if time<startTime then
     acceleration={0,0,0};

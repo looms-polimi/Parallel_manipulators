@@ -1,2 +1,8 @@
+CubicTrajectory
+LinearTrajectory
+PartialTrajectoryModel
 SpeedCommand
 TorqueCommand
+StepTrajectory
+Switch2
+TrapezoidalTrajectory

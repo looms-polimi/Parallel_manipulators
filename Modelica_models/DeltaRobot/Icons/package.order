@@ -35,6 +35,7 @@ Scenarios
 ServoMotor
 SpeedCommand
 SphericalJoint
+StepTrajectory
 Switch2
 Tests
 ThreeArms_IdealActPos

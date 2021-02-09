@@ -15,3 +15,5 @@ Package_Interfaces_test
 ServoMotor_test
 Parallelogram1_test
 test1
+Switch2_test
+Trajectory_test

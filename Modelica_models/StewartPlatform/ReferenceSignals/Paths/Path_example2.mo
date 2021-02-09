@@ -1,8 +1,8 @@
 within StewartPlatform.ReferenceSignals.Paths;
 
 model Path_example2 "Designed for non ideal scenario"
-    extends StewartPlatform.Icons.Path; // Icon
-
+    extends StewartPlatform.Icons.Path; 
+// Icon
     Interfaces.Pose pose annotation (Placement(transformation(extent={{60,-30},{120,30}}), iconTransformation(extent={{60,-30},{120,30}})));
 
     CubicTrajectory                  cubicTrajectory(
@@ -18,7 +18,7 @@ model Path_example2 "Designed for non ideal scenario"
       startTime=1,
       maxAcceleration=0.1,
       maxSpeed=0.2)        annotation (Placement(transformation(extent={{-78,56},{-58,76}})));
-    Switch2                  switch2_1(n=6) annotation (Placement(transformation(extent={{-18,-10},{2,10}})));
+    Switch2                  switch2(n=6) annotation (Placement(transformation(extent={{-18,-10},{2,10}})));
     TrapezoidalTrajectory                  trapezoidalTrajectory1(
       maxAcceleration=0.1,
       maxSpeed=0.2,
@@ -52,12 +52,18 @@ model Path_example2 "Designed for non ideal scenario"
       angles_stop={0,0,0})
                         annotation (Placement(transformation(extent={{-76,-86},{-56,-66}})));
   equation
-    connect(trapezoidalTrajectory.pose,switch2_1. poseInput[1]) annotation (Line(points={{-59,66},{-17,66},{-17,-2.5}},                   color={0,0,0}));
-    connect(trapezoidalTrajectory1.pose,switch2_1. poseInput[2]) annotation (Line(points={{-59,38},{-17,38},{-17,-1.5}},                   color={0,0,0}));
-    connect(trapezoidalTrajectory2.pose,switch2_1. poseInput[3]) annotation (Line(points={{-59,12},{-17,12},{-17,-0.5}},                    color={0,0,0}));
-    connect(cubicTrajectory.pose,switch2_1. poseInput[4]) annotation (Line(points={{-59,-20},{-18,-20},{-18,0.5},{-17,0.5}}, color={0,0,0}));
-    connect(cubicTrajectory1.pose,switch2_1. poseInput[5]) annotation (Line(points={{-59,-48},{-17,-48},{-17,1.5}},                     color={0,0,0}));
-    connect(cubicTrajectory2.pose, switch2_1.poseInput[6]) annotation (Line(points={{-57,-76},{-17,-76},{-17,2.5}}, color={0,0,0}));
-    connect(switch2_1.poseOutput, pose) annotation (Line(points={{1,0},{90,0}}, color={0,0,0}));
-    
+    connect(trapezoidalTrajectory.pose, switch2.poseInput[1]) annotation(
+    Line(points = {{-59, 66}, {-17, 66}, {-17, -2.5}}, color = {0, 0, 0}));
+    connect(trapezoidalTrajectory1.pose, switch2.poseInput[2]) annotation(
+    Line(points = {{-59, 38}, {-17, 38}, {-17, -1.5}}, color = {0, 0, 0}));
+    connect(trapezoidalTrajectory2.pose, switch2.poseInput[3]) annotation(
+    Line(points = {{-59, 12}, {-17, 12}, {-17, -0.5}}, color = {0, 0, 0}));
+    connect(cubicTrajectory.pose, switch2.poseInput[4]) annotation(
+    Line(points = {{-59, -20}, {-18, -20}, {-18, 0.5}, {-17, 0.5}}, color = {0, 0, 0}));
+    connect(cubicTrajectory1.pose, switch2.poseInput[5]) annotation(
+    Line(points = {{-59, -48}, {-17, -48}, {-17, 1.5}}, color = {0, 0, 0}));
+    connect(cubicTrajectory2.pose, switch2.poseInput[6]) annotation(
+    Line(points = {{-57, -76}, {-17, -76}, {-17, 2.5}}, color = {0, 0, 0}));
+    connect(switch2.poseOutput, pose) annotation(
+    Line(points = {{1, 0}, {90, 0}}, color = {0, 0, 0}));
 end Path_example2;
