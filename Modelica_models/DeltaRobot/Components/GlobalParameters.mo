@@ -7,6 +7,7 @@ model GlobalParameters "This model includes all parameters that are shared betwe
       import TY = Modelica.Mechanics.MultiBody.Types;
       import DeltaRobot.Types.*;
       import DeltaRobot.Functions.*;
+      import ModelicaServices.Machine.eps; //this constant is used to check if two real numbers are equal
 
     // Parameters
       // Base and platform parameters
@@ -57,15 +58,11 @@ model GlobalParameters "This model includes all parameters that are shared betwe
     // Servo motor
     parameter DeltaRobot.Types.ServoMotorParameters SMparameters "Servo motors parameters" annotation (Dialog(group="Servo motors"));
 
-    // Limit parameters for functions and external models
-    parameter SI.Angle maxTheta = armParameters[1].maxTheta "Max actuator angle" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle minTheta = armParameters[1].minTheta "Min actuator angle" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle maxElbowAngle = armParameters[1].maxElbowAngle "Max internal angle between the upper arm and the parallelogram (180° means allignment)" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle minElbowAngle = armParameters[1].minElbowAngle "Min internal angle between the upper arm and the parallelogram (0° means overlap)" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle maxParallelogramAngle = armParameters[1].maxParallelogramAngle "Max parallelogram direction angle (0° means rectangular shape)" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle minParallelogramAngle = armParameters[1].minParallelogramAngle "Min parallelogram direction angle (0° means rectangular shape)" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle maxPlatformAngle = armParameters[1].maxPlatformAngle "Max angle between parallelogram and platform (180° means allignment)" annotation(Dialog(group="Limit parameters for functions and external models"));
-    parameter SI.Angle minPlatformAngle = armParameters[1].minPlatformAngle "Min angle between parallelogram and platform (0° means overlap)" annotation(Dialog(group="Limit parameters for functions and external models"));
+equation
+    // Asserts
+    // (if the parameters 'L' and 'l' are not equal for all the arms the Inverse Kinematic cannot be computed)
+    assert(abs(armParameters[1].L - armParameters[2].L)<=eps and abs(armParameters[1].L - armParameters[3].L)<=eps, "The arms do not have the same parameter 'L', upper arm length", level = AssertionLevel.error);
+    assert(abs(armParameters[1].l - armParameters[2].l)<=eps and abs(armParameters[1].l - armParameters[3].l)<=eps, "The arms do not have the same parameter 'l', length of the long side of the parallelogram", level = AssertionLevel.error);
 
   annotation (
     defaultComponentName="gp",

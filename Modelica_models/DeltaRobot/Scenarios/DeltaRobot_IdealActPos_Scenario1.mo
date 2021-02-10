@@ -9,7 +9,7 @@ model DeltaRobot_IdealActPos_Scenario1
   DeltaRobot.Components.Base base 
   annotation(Placement(visible = true, transformation(origin = {0, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
 
-  DeltaRobot.Components.Platform platform(_enforceStates = false,fix_initPlatformAngularVel = false, fix_initPlatformOrientation = false, fix_initPlatformPos = false, fix_initPlatformVel = false, useGlobalParameters = false)  
+  DeltaRobot.Components.Platform platform(_enforceStates = true,fix_initPlatformAngularVel = false, fix_initPlatformOrientation = false, fix_initPlatformPos = true, fix_initPlatformVel = true, useGlobalParameters = true)  
     annotation(Placement(visible = true, transformation(origin = {0, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   
   DeltaRobot.Components.ThreeArms_P1_IdealActPos threeArms_P1_IdealActPos 
@@ -26,4 +26,6 @@ equation
   connect(threeArms_P1_IdealActPos.frame_platform, platform.frame_b) annotation(Line(points = {{0, -30}, {0, -30}, {0, -40}, {0, -40}}, color = {95, 95, 95}, thickness = 0.5));
   connect(const.y, threeArms_P1_IdealActPos.angleRef) annotation(Line(points = {{-58, -10}, {-24, -10}, {-24, -10}, {-24, -10}}, color = {0, 0, 127}, thickness = 0.5));
 
+annotation(
+    experiment(StartTime = 0, StopTime = 5, Tolerance = 1e-6, Interval = 0.01));
 end DeltaRobot_IdealActPos_Scenario1;

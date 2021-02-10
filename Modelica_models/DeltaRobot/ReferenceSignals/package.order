@@ -1,6 +1,10 @@
 CubicTrajectory
+InverseKinematic
+Junction
 LinearTrajectory
 PartialTrajectoryModel
+PickAndPlace
+PickAndPlace2
 SpeedCommand
 TorqueCommand
 StepTrajectory
