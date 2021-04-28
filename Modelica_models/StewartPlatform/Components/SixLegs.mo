@@ -22,6 +22,9 @@ model SixLegs "Set of six legs of a Stewart Platform appropiately connected, com
     // Spherical joints
     parameter SphericalJointParameters sphericalJointParameters[6] = gp.sphericalJointParameters "Parameters of the spherical joints" annotation (Dialog(group="Spherical joints"));
 
+// Variables
+    SI.Torque motorTorqueDIS[6] "Display torque applied by motors";
+
 // Models
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_base[6] "Frames for connection with the base's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,-100})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_platform[6] "Frames for connection with the platform's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,100})));
@@ -82,6 +85,13 @@ model SixLegs "Set of six legs of a Stewart Platform appropiately connected, com
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},rotation=90,origin={78,0})));
 
 equation
+  motorTorqueDIS[1]=leg1.servoMotor.T;
+  motorTorqueDIS[2]=leg2.servoMotor.T;
+  motorTorqueDIS[3]=leg3.servoMotor.T;
+  motorTorqueDIS[4]=leg4.servoMotor.T;
+  motorTorqueDIS[5]=leg5.servoMotor.T;
+  motorTorqueDIS[6]=leg6.servoMotor.T;
+
   connect(frame_platform[1], leg1.frame_b) annotation (Line(points={{0,86.6667},{-68,86.6667},{-68,15.8}},color={95,95,95},thickness=0.5));
   connect(frame_platform[2], leg2.frame_b) annotation (Line(points={{0,92},{-38,92},{-38,15.8}},color={95,95,95},thickness=0.5));
   connect(frame_platform[3], leg3.frame_b) annotation (Line(points={{0,97.3333},{-8,97.3333},{-8,15.8}},color={95,95,95},thickness=0.5));

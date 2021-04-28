@@ -6,15 +6,15 @@ record ArmParameters "Parameters of a Delta Robot's arm"
     // Upper arm
     parameter SI.Distance L = 0.2575 "Length" annotation(Dialog(group="Upper arm"));
     parameter SI.Diameter D = 0.03 "Diameter" annotation(Dialog(group="Upper arm"));
-    parameter SI.Mass M = 5.2 "Mass" annotation(Dialog(group="Upper arm"));
+    parameter SI.Mass M = 6 "Mass" annotation(Dialog(group="Upper arm"));
 
     // Parallelogram (common)
     parameter SI.Distance l = 0.7 "Long side length" annotation(Dialog(group="Parallelogram"));
     parameter SI.Distance h = 0.1 "Short side length" annotation(Dialog(group="Parallelogram"));
     parameter SI.Diameter Dl = 0.01 "Diameter of the long side" annotation(Dialog(group="Parallelogram"));
     parameter SI.Diameter Dh = 0.01 "Diameter of the short side" annotation(Dialog(group="Parallelogram"));
-    parameter SI.Mass Ml = 3.2 "Mass of the long side" annotation(Dialog(group="Parallelogram"));
-    parameter SI.Mass Mh = 0.8 "Mass of the short side" annotation(Dialog(group="Parallelogram"));
+    parameter SI.Mass Ml = 2 "Mass of the long side" annotation(Dialog(group="Parallelogram"));
+    parameter SI.Mass Mh = 2 "Mass of the short side" annotation(Dialog(group="Parallelogram"));
 
     // Parallelogram1
     parameter Boolean computeParallelogramLength = false "=true if the long side length is a guess value, =false if it is a fixed value";

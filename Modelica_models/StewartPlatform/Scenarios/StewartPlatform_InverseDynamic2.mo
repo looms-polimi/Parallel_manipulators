@@ -1,6 +1,6 @@
 within StewartPlatform.Scenarios;
 
-model StewartPlatform_InverseDynamic1
+model StewartPlatform_InverseDynamic2
   extends StewartPlatform.Icons.Scenario;
   // Icon
   inner Components.GlobalParameters gp annotation(
@@ -15,7 +15,7 @@ model StewartPlatform_InverseDynamic1
     Placement(visible = true, transformation(origin = {-40, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Components.Controller controller( limitOutputs = true, useGlobalParameters = true)  annotation(
     Placement(visible = true, transformation(origin = {-90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ReferenceSignals.LinearTrajectory linearTrajectory(angles_stop = {20, 20, 20}, rotationType_start = Modelica.Mechanics.MultiBody.Types.RotationTypes.RotationAxis, stopPosition = {0, 0, 1.60}) annotation(
+  ReferenceSignals.Paths.Path_example1 path annotation(
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Components.Base base_invDyn annotation(
     Placement(visible = true, transformation(origin = {40, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
@@ -30,7 +30,7 @@ equation
     Line(points = {{-40, -25.2}, {-40, -25.2}, {-40, -19.2}, {-40, -19.2}}, color = {95, 95, 95}, thickness = 0.5));
   connect(controller.controlBus, sixLegs.controlBus) annotation(
     Line(points = {{-80, -0.2}, {-60, -0.2}}, color = {255, 204, 51}, thickness = 0.5));
-  connect(linearTrajectory.pose, controller.inputPose) annotation(
+  connect(path.pose, controller.inputPose) annotation(
     Line(points = {{-121, 0}, {-101, 0}}, color = {95, 95, 95}, thickness = 0.5));
   connect(base_invDyn.frame_b, sixLegs_invDyn.frame_base) annotation(
     Line(points = {{40, -26}, {40, -26}, {40, -20}, {40, -20}}, color = {95, 95, 95}, thickness = 0.5));
@@ -39,6 +39,6 @@ equation
   connect(sixLegs.controlBus, sixLegs_invDyn.controlBus) annotation(
     Line(points = {{20, 0}, {0, 0}, {0, -80}, {-70, -80}, {-70, 0}, {-62, 0}}, color = {255, 204, 51}, thickness = 0.5));
   annotation(
-    experiment(StartTime = 0, StopTime = 1, Tolerance = 1e-06, Interval = 0.12),
+    experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.12),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --maxSizeLinearTearing=400");
-end StewartPlatform_InverseDynamic1;
+end StewartPlatform_InverseDynamic2;

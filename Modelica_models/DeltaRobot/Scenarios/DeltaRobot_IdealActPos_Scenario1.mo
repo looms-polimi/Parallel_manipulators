@@ -3,16 +3,16 @@ within DeltaRobot.Scenarios;
 model DeltaRobot_IdealActPos_Scenario1
   extends DeltaRobot.Icons.Scenario;
   
-  inner DeltaRobot.Components.GlobalParameters gp(initPlatformPos = {0.2, 0.2, -0.643})  
+  inner Components.GlobalParameters gp(initPlatformPos = {0.2, 0.2, -0.643})  
   annotation(Placement(visible = true, transformation(origin = {-80, 78}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
-  DeltaRobot.Components.Base base 
+  Components.Base base 
   annotation(Placement(visible = true, transformation(origin = {0, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
 
-  DeltaRobot.Components.Platform platform(_enforceStates = true,fix_initPlatformAngularVel = false, fix_initPlatformOrientation = false, fix_initPlatformPos = true, fix_initPlatformVel = true, useGlobalParameters = true)  
+  Components.Platform platform(_enforceStates = true,fix_initPlatformAngularVel = false, fix_initPlatformOrientation = false, fix_initPlatformPos = true, fix_initPlatformVel = true, useGlobalParameters = true)  
     annotation(Placement(visible = true, transformation(origin = {0, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   
-  DeltaRobot.Components.ThreeArms_P1_IdealActPos threeArms_P1_IdealActPos 
+  Components.ThreeArms_P1_IdealActPos threeArms_P1_IdealActPos 
   annotation(Placement(visible = true, transformation(origin = {-2.88658e-15, -10}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   
   Modelica.Blocks.Sources.Constant const[3](k = {-0.207708, -0.207708, -0.207708}) 

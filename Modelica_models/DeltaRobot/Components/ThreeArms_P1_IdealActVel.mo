@@ -35,6 +35,14 @@ model ThreeArms_P1_IdealActVel
         annotation(Placement(visible = true, transformation(origin = {50, -30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
 equation
+  motorTorqueDIS[1] = idealActuatorVel1.torque;
+  motorTorqueDIS[2] = idealActuatorVel2.torque;
+  motorTorqueDIS[3] = idealActuatorVel3.torque;
+
+  motorVelocityDIS[1] = idealActuatorVel1.velocity;
+  motorVelocityDIS[2] = idealActuatorVel2.velocity;
+  motorVelocityDIS[3] = idealActuatorVel3.velocity;
+
   connect(frame_base[1], idealActuatorVel1.frame_a) annotation(Line(points = {{0, 100}, {-50, 100}, {-50, 80}}, color = {95, 95, 95}));
   connect(frame_base[2], idealActuatorVel2.frame_a) annotation(Line(points = {{0, 100}, {0, 80}}, color = {95, 95, 95}));
   connect(frame_base[3], idealActuatorVel3.frame_a) annotation(Line(points = {{0, 100}, {50, 100}, {50, 80}}, color = {95, 95, 95}));

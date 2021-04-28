@@ -1,6 +1,6 @@
 within StewartPlatform.ReferenceSignals.Paths;
 
-model Path_example1 "Designed for ideal scenario"
+model Path_example1 "Example of path for the Stewart Platform"
     extends StewartPlatform.Icons.Path; // Icon
 
     Interfaces.Pose pose annotation (Placement(transformation(extent={{60,-30},{120,30}}), iconTransformation(extent={{60,-30},{120,30}})));

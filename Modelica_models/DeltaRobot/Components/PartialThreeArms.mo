@@ -18,6 +18,10 @@ partial model PartialThreeArms "Partial model of the three arms of a Delta robot
     // Reducers
       parameter ReducerParameters reducerParameters[3] = gp.reducerParameters "Parameters of the gearbox reducers" annotation (Dialog(group="Reducers"));
 
+// Variables
+    SI.Torque motorTorqueDIS[3] "Display torque applied by motors";
+    SI.AngularVelocity motorVelocityDIS[3] "Angular velocity of morots";
+
 public
     // Models
       Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_base[3] "Frames for connection with the base's joints" annotation (Placement(transformation(extent={{-16,-16},{16,16}},rotation=90,origin={0,100})));

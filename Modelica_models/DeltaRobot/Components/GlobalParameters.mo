@@ -30,20 +30,22 @@ model GlobalParameters "This model includes all parameters that are shared betwe
         ArmParameters(computeParallelogramLength = false)
       } "Parameters of the arms" annotation (Dialog(group="Arms"));    
 
+    // Actuator
+      parameter Real actuatorParameters_Tf = 0.01 annotation (Dialog(group="Actuators")); // (simple solution to edit only this parameter in the scenarios for the model validation)
 //    // Actuators (if all 'fix' parameters and 'enforceStates' in Platform model are setted to 'false')
 //      parameter ActuatorParameters actuatorParameters[3] =
 //      {
-//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[1]),
-//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[2]),
-//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[3])
+//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[1], Tf = actuatorParameters_Tf),
+//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[2], Tf = actuatorParameters_Tf),
+//        ActuatorParameters(stateSelect = StateSelect.always, initialAngleFixed = true, initialAngularVelFixed = true, initialAngularAccFixed = false, initialAngle = initTheta[3], Tf = actuatorParameters_Tf)
 //      } "Parameters of the rotary actuators" annotation (Dialog(group="Actuators"));
 
     // Actuators (if all parameters in Platform model are setted to 'false' except for 'enforceStates', 'fix_initPlatformPos' and 'fix_initPlatformVel')
       parameter ActuatorParameters actuatorParameters[3] =
       {
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[1]),
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[2]),
-        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[3])
+        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[1], Tf = actuatorParameters_Tf),
+        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[2], Tf = actuatorParameters_Tf),
+        ActuatorParameters(stateSelect = StateSelect.prefer, initialAngleFixed = false, initialAngularVelFixed = false, initialAngularAccFixed = false, initialAngle = initTheta[3], Tf = actuatorParameters_Tf)
       } "Parameters of the rotary actuators" annotation (Dialog(group="Actuators"));
 
     // Reducers
