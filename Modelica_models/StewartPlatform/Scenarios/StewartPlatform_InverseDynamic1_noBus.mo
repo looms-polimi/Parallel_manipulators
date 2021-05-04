@@ -23,7 +23,7 @@ model StewartPlatform_InverseDynamic1_noBus
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Components.Platform platform_invDyn annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
-  StewartPlatform.Interfaces.ControlBusDeMux controlBusDeMux annotation(
+  Interfaces.ControlBusDeMux controlBusDeMux annotation(
     Placement(visible = true, transformation(origin = {-40, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(platform.frame_b, sixLegs.frame_platform) annotation(

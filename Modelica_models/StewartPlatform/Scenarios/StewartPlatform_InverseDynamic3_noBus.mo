@@ -1,6 +1,6 @@
 within StewartPlatform.Scenarios;
 
-model StewartPlatform_InverseDynamic3
+model StewartPlatform_InverseDynamic3_noBus
   extends StewartPlatform.Icons.Scenario;
   // Icon
   inner Components.GlobalParameters gp annotation(
@@ -19,10 +19,14 @@ model StewartPlatform_InverseDynamic3
     Placement(visible = true, transformation(origin = {-130, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Components.Base base_invDyn annotation(
     Placement(visible = true, transformation(origin = {40, -40}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
-  Components.SixLegs_invDyn sixLegs_invDyn annotation(
+  Components.SixLegs_invDyn2 sixLegs_invDyn annotation(
     Placement(visible = true, transformation(origin = {40, 0}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
   Components.Platform platform_invDyn annotation(
     Placement(visible = true, transformation(origin = {40, 40}, extent = {{-20, 20}, {20, -20}}, rotation = 0)));
+  Interfaces.ControlBusDeMux controlBusDeMux annotation(
+    Placement(visible = true, transformation(origin = {-40, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Blocks.Math.Feedback TorquesComparison[6] annotation(
+    Placement(visible = true, transformation(origin = {90, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(platform.frame_b, sixLegs.frame_platform) annotation(
     Line(points = {{-40, 25.2}, {-40, 25.2}, {-40, 19.2}, {-40, 19.2}}, color = {95, 95, 95}, thickness = 0.5));
@@ -36,9 +40,19 @@ equation
     Line(points = {{40, -26}, {40, -26}, {40, -20}, {40, -20}}, color = {95, 95, 95}, thickness = 0.5));
   connect(sixLegs_invDyn.frame_platform, platform_invDyn.frame_b) annotation(
     Line(points = {{40, 20}, {40, 20}, {40, 26}, {40, 26}}, color = {95, 95, 95}, thickness = 0.5));
-  connect(sixLegs.controlBus, sixLegs_invDyn.controlBus) annotation(
-    Line(points = {{20, 0}, {0, 0}, {0, -80}, {-70, -80}, {-70, 0}, {-62, 0}}, color = {255, 204, 51}, thickness = 0.5));
+  connect(controller.controlBus, controlBusDeMux.controlBus) annotation(
+    Line(origin = {-65, -40}, points = {{15, -40}, {-3, -40}, {-3, 40}, {-15, 40}}, color = {255, 204, 51}, thickness = 0.5));
+  connect(controlBusDeMux.angularPos, sixLegs_invDyn.angularPos) annotation(
+    Line(points = {{-28, -72}, {-12, -72}, {-12, 12}, {16, 12}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(controlBusDeMux.angularVel, sixLegs_invDyn.angularVel) annotation(
+    Line(points = {{-28, -74}, {0, -74}, {0, 0}, {16, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(controlBusDeMux.angularAcc, sixLegs_invDyn.angularAcc) annotation(
+    Line(points = {{-28, -78}, {6, -78}, {6, -12}, {16, -12}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(sixLegs_invDyn.appliedTorque, TorquesComparison.u1) annotation(
+    Line(points = {{62, 0}, {82, 0}}, color = {0, 0, 127}, thickness = 0.5));
+  connect(controlBusDeMux.appliedTorque, TorquesComparison.u2) annotation(
+    Line(points = {{-28, -86}, {90, -86}, {90, -8}}, color = {0, 0, 127}, thickness = 0.5));
   annotation(
     experiment(StartTime = 0, StopTime = 10, Tolerance = 1e-06, Interval = 0.12),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian,newInst --maxSizeLinearTearing=400");
-end StewartPlatform_InverseDynamic3;
+end StewartPlatform_InverseDynamic3_noBus;
