@@ -1,6 +1,6 @@
 within StewartPlatform.Icons;
 
-model StewartPlatform "Icon for 'StewartPlatform' package"
+package StewartPlatform "Icon for 'StewartPlatform' package"
     extends Modelica.Icons.Package;
 
     annotation (Icon(graphics={

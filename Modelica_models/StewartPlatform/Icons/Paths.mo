@@ -1,6 +1,6 @@
 within StewartPlatform.Icons;
 
-model Paths "Icon for 'Paths' package"
+package Paths "Icon for 'Paths' package"
     extends Modelica.Icons.Package;    
 
     annotation (Icon(graphics={Text(lineColor = {0, 0, 255}, extent = {{-150, 150}, {150, 110}}, textString = "%name"), Polygon(lineColor = {192, 192, 192}, fillColor = {192, 192, 192}, fillPattern = FillPattern.Solid, points = {{-80, 90}, {-88, 68}, {-72, 68}, {-80, 88}, {-80, 90}}),

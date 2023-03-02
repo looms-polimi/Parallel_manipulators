@@ -1,5 +1,5 @@
 within StewartPlatform.Icons;
 
-model Scenarios "Icon for 'Scenarios' package"
+package Scenarios "Icon for 'Scenarios' package"
     extends Modelica.Icons.ExamplesPackage;
 end Scenarios;
