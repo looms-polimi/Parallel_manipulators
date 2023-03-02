@@ -9,6 +9,6 @@ package DeltaRobot "Library for modelling of Delta Robots"
     import Cv = Modelica.Units.Conversions;    
     import Modelica.Units.Conversions.from_deg;
     import Modelica.Units.Conversions.to_deg;
-annotation(version = "1.0.0",
+annotation(version = "1.0.1",
            uses(Modelica(version = "4.0.0")));
 end DeltaRobot;
