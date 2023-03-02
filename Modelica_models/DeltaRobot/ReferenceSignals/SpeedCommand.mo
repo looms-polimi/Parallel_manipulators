@@ -9,7 +9,7 @@ model SpeedCommand "The outputs are three speed reference signals defined throug
   parameter SI.Time deltaTime = 0 "Time between two repetitions of the reference speeds";
   parameter Real k = 1000*7.11/1500 "Gain";
   parameter String tableName = "Speeds";
-  parameter String fileName = "D:/Dev/Modelica/GitHub_ParallelManipulators/Parallel_manipulators/Modelica_models/DeltaRobot/DataTables/SpeedCommand.txt";
+  parameter String fileName = Modelica.Utilities.Files.loadResource("modelica://DeltaRobot/DataTables/SpeedCommand.txt");
 
   // Variables
   SI.AngularVelocity speed[3];

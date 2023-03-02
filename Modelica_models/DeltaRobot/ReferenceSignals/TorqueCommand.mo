@@ -9,7 +9,7 @@ model TorqueCommand "The outputs are three torque reference signals defined thro
   parameter SI.Time deltaTime = 0 "Time between two repetitions of the reference torque";
   parameter Real k = 1 "Gain";
   parameter String tableName = "Torque";
-  parameter String fileName = "D:/Dev/Modelica/GitHub_ParallelManipulators/Parallel_manipulators/Modelica_models/DeltaRobot/DataTables/TorqueCommand.txt";
+  parameter String fileName = Modelica.Utilities.Files.loadResource("modelica://DeltaRobot/DataTables/TorqueCommand.txt");
 
   // Variables
   SI.Torque torque[3];
