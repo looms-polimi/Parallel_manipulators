@@ -1,6 +1,6 @@
 within DeltaRobot.Icons;
 
 model DeltaRobot "Icon for 'DeltaRobot' package"
-    //TODO
-
+  extends Modelica.Icons.Package;
+  //TODO
 end DeltaRobot;
