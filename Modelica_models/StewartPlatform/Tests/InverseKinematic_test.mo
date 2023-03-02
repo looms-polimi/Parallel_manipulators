@@ -28,7 +28,7 @@ model InverseKinematic_test "Test for 'jointsCoordinates', 'legsDirections' and 
 function changeRefFrame "Change the reference frame of a set of 6 points"
   extends Modelica.Icons.Function;
   //Imports
-  import SI = Modelica.SIunits;
+  import SI = Modelica.Units.SI;
   import TM = Modelica.Mechanics.MultiBody.Frames.TransformationMatrices;
 
 //Variables
