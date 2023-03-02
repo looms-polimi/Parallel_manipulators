@@ -1,6 +1,6 @@
 within DeltaRobot.Icons;
 
-model Units "Icon for 'Units' package"
+package Units "Icon for 'Units' package"
     extends Modelica.Icons.Package;
     annotation (Icon(graphics={
       Polygon(

@@ -1,6 +1,6 @@
 within DeltaRobot.Icons;
 
-model Components "Icon for 'Components' package"
+package Components "Icon for 'Components' package"
     extends Modelica.Icons.Package;
 
     annotation (Icon(graphics={
