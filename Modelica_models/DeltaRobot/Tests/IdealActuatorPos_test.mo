@@ -1,7 +1,7 @@
 within DeltaRobot.Tests;
 
 model IdealActuatorPos_test "Test of model 'IdealActuatorPos'"
-  Components.IdealActuatorPos idealActuatorPos(actuatorParameters(initialAngleFixed = true, initialAngularVelFixed = true, initialAngle = pi / 6), enableLimiter = false) annotation(
+  Components.IdealActuatorPos idealActuatorPos(actuatorParameters(initialAngleFixed = true, initialAngularVelFixed = true, initialAngle = pi / 6)) annotation(
     Placement(visible = true, transformation(origin = {0, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   inner Modelica.Mechanics.MultiBody.World world annotation(
     Placement(visible = true, transformation(origin = {-50, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
